@@ -33,17 +33,21 @@ export default {
 
 ## Commands
 
+### Create Vite React TypeScript project
+
 npm create vite@latest my-project -- --template react-ts
 
 cd my-project
 
 npm install
 
+### Install Tailwind CSS and related dependencies
+
 npm install -D tailwindcss postcss autoprefixer
 
 npx tailwindcss init -p
 
-In tailwind.config.js, add the following:
+### Configure tailwind.config.js
 
 /** @type {import('tailwindcss').Config} */
 
@@ -58,10 +62,59 @@ extend: {},
 plugins: [],
 }
 
-In index.css, add the following:
+### Update index.css
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+### Run the development server
+
 npm run dev
+
+
+### add nextui to project
+
+npm i @nextui-org/react framer-motion
+
+// tailwind.config.js
+
+const { nextui } = require("@nextui-org/react");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+content: [
+// ...
+"./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
+],
+theme: {
+extend: {},
+},
+darkMode: "class",
+plugins: [nextui()]
+}
+
+// main.tsx
+
+import {NextUIProvider} from '@nextui-org/react'
+
+<React.StrictMode>
+
+<NextUIProvider
+->
+
+<App
+/>
+
+</NextUIProvider
+->
+
+</React.StrictMode>
+
+
+
+## Links 
+
+https://tailwindcss.com/docs/guides/vite
+
+https://nextui.org/docs/frameworks/vite
