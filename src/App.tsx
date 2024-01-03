@@ -1,7 +1,7 @@
 // import {Button} from "@nextui-org/react";
 import './App.css'
 import NavBar from "./view/NavBar.tsx";
-// import Footer from "./view/Footer.tsx";
+import Footer from "./view/Footer.tsx";
 // import Login from "./view/Login.tsx";
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
             <NavBar></NavBar>
             <div className={'h-56 w-full bg-red-500'}></div>
             <div className={'h-56 w-full bg-red-500'}></div>
+            <Footer></Footer>
         </div>)
 }
 
