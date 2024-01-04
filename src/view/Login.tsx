@@ -1,8 +1,14 @@
 import React from "react";
 import {Tabs, Tab, Input, Link, Button, Card, CardBody} from "@nextui-org/react";
+import { EyeFilledIcon} from "./icon/EyeFilledIcon.jsx";
+import { EyeSlashFilledIcon} from "./icon/EyeSlashFilledIcon.jsx";
+
 
 function Login() {
     const [selected, setSelected] = React.useState("login");
+
+    const [isVisible, setIsVisible] = React.useState(false);
+    const toggleVisibility = () => setIsVisible(!isVisible);
 
     return (
 
@@ -25,12 +31,30 @@ function Login() {
                                 <Tab key="login" title="Login">
                                     <form className="flex flex-col gap-4">
                                         <Input isRequired label="Email" placeholder="Enter your email" type="email"/>
+                                        {/*<Input*/}
+                                        {/*    isRequired*/}
+                                        {/*    label="Password"*/}
+                                        {/*    placeholder="Enter your password"*/}
+                                        {/*    type="password"*/}
+                                        {/*/>*/}
+
                                         <Input
-                                            isRequired
                                             label="Password"
+                                            variant="bordered"
                                             placeholder="Enter your password"
-                                            type="password"
+                                            endContent={
+                                                <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+                                                    {isVisible ? (
+                                                        <EyeSlashFilledIcon className="text-xl text-default-400 pointer-events-none" />
+                                                    ) : (
+                                                        <EyeFilledIcon className="text-xl text-default-400 pointer-events-none" />
+                                                    )}
+                                                </button>
+                                            }
+                                            type={isVisible ? "text" : "password"}
+                                            className="max-w-xs"
                                         />
+
                                         <p className="text-center text-small">
                                             Need to create an account?{" "}
                                             <Link size="sm" onPress={() => setSelected("sign-up")}>
@@ -46,14 +70,33 @@ function Login() {
                                 </Tab>
                                 <Tab key="sign-up" title="Sign up">
                                     <form className="flex flex-col gap-4 h-[300px]">
-                                        <Input isRequired label="Name" placeholder="Enter your name" type="password"/>
+                                        <Input isRequired label="Name" placeholder="Enter your name" type="text"/>
                                         <Input isRequired label="Email" placeholder="Enter your email" type="email"/>
+                                        {/*<Input*/}
+                                        {/*    isRequired*/}
+                                        {/*    label="Password"*/}
+                                        {/*    placeholder="Enter your password"*/}
+                                        {/*    type="password"*/}
+                                        {/*/>*/}
+
                                         <Input
-                                            isRequired
                                             label="Password"
+                                            variant="bordered"
                                             placeholder="Enter your password"
-                                            type="password"
+                                            endContent={
+                                                <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+                                                    {isVisible ? (
+                                                        <EyeSlashFilledIcon className="text-xl text-default-400 pointer-events-none" />
+                                                    ) : (
+                                                        <EyeFilledIcon className="text-xl text-default-400 pointer-events-none" />
+                                                    )}
+                                                </button>
+                                            }
+                                            type={isVisible ? "text" : "password"}
+                                            className="max-w-xs"
                                         />
+
+
                                         <p className="text-center text-small">
                                             Already have an account?{" "}
                                             <Link size="sm" onPress={() => setSelected("login")}>

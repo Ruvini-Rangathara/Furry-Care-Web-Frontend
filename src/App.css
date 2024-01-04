@@ -38,3 +38,8 @@ body{
     animation: logo-spin infinite 20s linear;
   }
 }
+
+
+.input-text{
+  font-size: 12px;
+}
