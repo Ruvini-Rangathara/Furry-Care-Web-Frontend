@@ -6,7 +6,8 @@ import Footer from "./view/Footer.tsx";
 // import About from "./view/About.tsx";
 // import PetForm from "./view/PetForm.tsx";
 // import VetForm from "./view/VetForm.tsx";
-import OrgForm from "./view/OrgForm.tsx";
+// import OrgForm from "./view/OrgForm.tsx";
+import EventForm from "./view/EventForm.tsx";
 
 function App() {
 
@@ -23,8 +24,9 @@ function App() {
 
             {/*<VetForm></VetForm>*/}
 
-            <OrgForm></OrgForm>
+            {/*<OrgForm></OrgForm>*/}
 
+            <EventForm></EventForm>
             <Footer></Footer>
         </div>)
 }

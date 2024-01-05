@@ -3,7 +3,7 @@ import CustomButton from "../component/input/custom-button.tsx";
 
 const userId :string = `U-0001`;
 
-function OrgForm() {
+function EventForm() {
     return <
         div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
 
@@ -13,30 +13,29 @@ function OrgForm() {
             <label className={'text-[18px] mr-0 m-auto mt-5'}>User ID : {userId}</label>
 
             <div className={'flex flex-col justify-center items-center'}>
-                <p className={'text-[35px] text-[#071722]'}>Organization Details</p>
+                <p className={'text-[35px] text-[#071722]'}>Event Details</p>
                 <p className={'text-[18px] text-[#071722] pb-3'}>
-                    "Improve your pet care with our comprehensive tools, effortlessly<br/>
-                     managing grooming schedules and medical records for a<br/>
-                     stress-free experience."
+                    "Simplify pet events with our organized system. Coordinate seamlessly<br/>
+                     for stress-free experiences, managing details to ensure comprehensive<br/>
+                     and enjoyable gatherings."
                 </p>
-                <img className={'w-36 h-36 border border-gray-300'} src={'src/assets/org-image.jpg'}
-                     alt={'Dog Image'}></img>
+
             </div>
 
             <div className={'flex flex-row gap-4'}>
-                <Input label={"Organization ID : "} name={'id'} type={'text'} optional={false} placeholder={'O-0001'}/>
-                <Input label={"Organization Name : "} name={'type'} type={'text'} optional={false} placeholder={'Ex:Furry Care'}/>
+                <Input label={"Event ID : "} name={'id'} type={'text'} optional={false} placeholder={'E-0001'}/>
+                <Input label={"Event Name : "} name={'type'} type={'text'} optional={false} placeholder={'Ex:Dog Show'}/>
             </div>
 
             <Input type={'text'} name={'name'} label={'Description : '} optional={true} placeholder={'Ex:Note'}/>
 
             <div className={'flex flex-row gap-4'}>
-                <Input type={'text'} name={'location'} label={'Location : '} optional={true} placeholder={'Ex:Panadura'}/>
-                <Input type={'tel'} name={'contact'} label={'Contact No : '} optional={true}
-                       placeholder={'Ex:0786628478'}/>
+                <Input type={'date'} name={'date'} label={'Date : '} optional={false} placeholder={''}/>
+                <Input type={'time'} name={'time'} label={'Time : '} optional={false}
+                       placeholder={''}/>
             </div>
 
-            <Input type={'email'} name={'email'} label={'Email : '} optional={false} placeholder={'Ex:ruvini925@gmail.com'}/>
+            <Input type={'text'} name={'location'} label={'Location : '} optional={false} placeholder={'Ex:Panadura'}/>
 
             <div className={'flex flex-row gap-4'}>
                 <div>
@@ -51,6 +50,7 @@ function OrgForm() {
                         <CustomButton borderColor={'#D75555'} bgColor={'white'} hoverColor={'#D75555'}
                                       textColor={'#D75555'} textHoverColor={'white'} text={'Delete'}/>
                     </div>
+
                 </div>
             </div>
 
@@ -59,4 +59,4 @@ function OrgForm() {
     </div>
 }
 
-export default OrgForm;
+export default EventForm;
