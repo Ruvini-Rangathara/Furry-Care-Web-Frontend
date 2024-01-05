@@ -2,16 +2,22 @@ import Input from "../component/input/input";
 import Select from "../component/input/combo-box.tsx";
 import CustomButton from "../component/input/custom-button.tsx";
 
+const userId :string = `U-0001`;
+
 function PetForm() {
     return <
         div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
 
-        <form className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
+        <form
+            className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
+
+            <label className={'text-[18px] mr-0 m-auto mt-5'}>User ID : {userId}</label>
 
             <div className={'flex flex-col justify-center items-center'}>
                 <p className={'text-[35px] text-[#071722]'}>Pet Details</p>
                 <p className={'text-[18px] text-[#071722] pb-3'}>
-                    "Simplify pet care with our easy form. Manage medical history, <br/> dietary preferences, and more for
+                    "Simplify pet care with our easy form. Manage medical history, <br/> dietary preferences, and more
+                    for
                     stress-free, comprehensive pet care."
                 </p>
                 <img className={'w-36 h-36 border border-gray-300'} src={'src/assets/dog-image1.jpeg'}
@@ -26,7 +32,7 @@ function PetForm() {
             <Input type={'text'} name={'name'} label={'Pet Name : '} optional={true} placeholder={'Ex:Rex'}/>
 
             <div className={'flex flex-row gap-4'}>
-                <Input type={'text'} name={'age'} label={'Age : '} optional={true} placeholder={'Ex:2'}/>
+                <Input type={'number'} name={'age'} label={'Age : '} optional={true} placeholder={'Ex:2'}/>
                 <Input type={'text'} name={'breed'} label={'Breed : '} optional={true}
                        placeholder={'Ex:German Shepherd'}/>
             </div>
@@ -44,7 +50,7 @@ function PetForm() {
 
             <div className={'flex flex-row gap-4'}>
                 <div>
-                    <img className={'w-32 h-32'} src={'src/assets/logo-pet-care.png'}></img>
+                    <img className={'w-32 h-32 mt-4'} src={'src/assets/logo-pet-care.png'}></img>
                 </div>
                 <div className={'mt-6 ml-6'}>
                     <div className="flex gap-2 justify-center mt-3">

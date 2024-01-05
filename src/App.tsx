@@ -5,7 +5,8 @@ import Footer from "./view/Footer.tsx";
 // import Login from "./view/Login.tsx";
 // import About from "./view/About.tsx";
 // import PetForm from "./view/PetForm.tsx";
-import VetForm from "./view/VetForm.tsx";
+// import VetForm from "./view/VetForm.tsx";
+import OrgForm from "./view/OrgForm.tsx";
 
 function App() {
 
@@ -18,8 +19,11 @@ function App() {
             {/*<About></About>*/}
 
             {/*<PetForm></PetForm>*/}
+            <div className={'h-56 w-full bg-red-500'}></div>
 
-            <VetForm></VetForm>
+            {/*<VetForm></VetForm>*/}
+
+            <OrgForm></OrgForm>
 
             <Footer></Footer>
         </div>)
