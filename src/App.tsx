@@ -8,7 +8,8 @@ import Footer from "./view/Footer.tsx";
 // import VetForm from "./view/VetForm.tsx";
 // import OrgForm from "./view/OrgForm.tsx";
 // import EventForm from "./view/EventForm.tsx";
-import DonationForm from "./view/DonationForm.tsx";
+// import DonationForm from "./view/DonationForm.tsx";
+import ComplaintForm from "./view/ComplaintForm.tsx";
 
 function App() {
 
@@ -29,7 +30,10 @@ function App() {
 
             {/*<EventForm></EventForm>*/}
 
-            <DonationForm></DonationForm>
+            {/*<DonationForm></DonationForm>*/}
+
+            <ComplaintForm></ComplaintForm>
+
             <Footer></Footer>
         </div>)
 }
