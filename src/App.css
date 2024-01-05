@@ -9,6 +9,7 @@ body{
 
 .navbarItem{
   padding: 0 0.5rem;
+  font-size: 18px;
 }
 
 .logo {
@@ -41,5 +42,5 @@ body{
 
 
 .input-text{
-  font-size: 12px;
+  font-size: 15px;
 }

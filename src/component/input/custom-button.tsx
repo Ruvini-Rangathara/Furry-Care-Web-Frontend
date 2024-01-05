@@ -23,13 +23,9 @@ class CustomButton extends React.Component<ButtonProps, any> {
             transition: 'background-color 0.3s ease, color 0.3s ease',
         };
 
-        // const hoverStyle = {
-        //     backgroundColor: hoverColor,
-        //     color: textHoverColor,
-        // };
-
         return (
             <button
+                className={'text-[18px]'}
                 style={buttonStyle}
                 onMouseOver={(e) => {e.currentTarget.style.backgroundColor = hoverColor, e.currentTarget.style.color = textHoverColor}}
                 onMouseOut={(e) => {e.currentTarget.style.backgroundColor = bgColor, e.currentTarget.style.color = textColor}}

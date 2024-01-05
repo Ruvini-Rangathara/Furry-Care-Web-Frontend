@@ -32,14 +32,14 @@ function NavBar() {
             <NavbarContent className="sm:hidden pr-3" justify="center">
                 <NavbarBrand>
                     <img className={'logo'} src="src/assets/logo-pet-care.png" alt="React.js"/>
-                    <p className="font-bold text-inherit mr-10">FURRY CARE</p>
+                    <p className="font-bold  mr-10 text-[18px]">FURRY CARE</p>
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarBrand>
                     <img className={'logo'} src="src/assets/logo-pet-care.png" alt="React.js" />
-                    <p className="font-bold text-inherit mr-10">FURRY CARE</p>
+                    <p className="font-bold text-[18px] mr-10">FURRY CARE</p>
                 </NavbarBrand>
                 <NavbarItem className={'navbarItem pl-10'}>
                     <Link color="foreground" href="#">
@@ -76,10 +76,6 @@ function NavBar() {
             </NavbarContent>
 
             <NavbarContent justify="end">
-                {/*<NavbarItem className={'cursor-pointer'}>*/}
-                {/*    /!*add setting icon for account section*!/*/}
-                {/*    <IoSettingsOutline />*/}
-                {/*</NavbarItem>*/}
 
                 <User
                     className={'rounded-3xl cursor-pointer ml-56 w-40'}
@@ -90,9 +86,6 @@ function NavBar() {
                     }}
                 />
 
-                {/*<NavbarItem className="hidden lg:flex">*/}
-                {/*    <Link href="#" className="text-gray-600">Logout</Link>*/}
-                {/*</NavbarItem>*/}
             </NavbarContent>
 
             <NavbarMenu>

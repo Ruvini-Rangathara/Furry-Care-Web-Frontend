@@ -18,8 +18,8 @@ function Login() {
                     <img className={'w-[200px] '} src={'src/assets/login-img.png'} alt={'login image'}></img>
                 </div>
 
-                <div className="flex flex-col w-[340px]">
-                    <Card className="max-w-full w-[340px] h-[400px] rounded-none">
+                <div className="flex flex-col w-[370px]">
+                    <Card className="max-w-full w-[37 0px] h-[400px] rounded-none">
                         <CardBody className="overflow-hidden">
                             <Tabs
                                 fullWidth
@@ -28,15 +28,9 @@ function Login() {
                                 selectedKey={selected}
                                 onSelectionChange={setSelected}
                             >
-                                <Tab key="login" title="Login">
-                                    <form className="flex flex-col gap-4">
-                                        <Input isRequired label="Email" placeholder="Enter your email" type="email"/>
-                                        {/*<Input*/}
-                                        {/*    isRequired*/}
-                                        {/*    label="Password"*/}
-                                        {/*    placeholder="Enter your password"*/}
-                                        {/*    type="password"*/}
-                                        {/*/>*/}
+                                <Tab key="login" title="Login" className={'text-[18px]'}>
+                                    <form className="flex flex-col gap-4 text-[18px]">
+                                        <Input isRequired label="Email" placeholder="Enter your email" type="email" />
 
                                         <Input
                                             label="Password"
@@ -52,32 +46,26 @@ function Login() {
                                                 </button>
                                             }
                                             type={isVisible ? "text" : "password"}
-                                            className="max-w-xs"
+                                            className="max-w-xs text-[18px]"
                                         />
 
-                                        <p className="text-center text-small">
+                                        <p className="text-center text-[18px]">
                                             Need to create an account?{" "}
-                                            <Link size="sm" onPress={() => setSelected("sign-up")}>
+                                            <Link size="sm" onPress={() => setSelected("sign-up")} className={'text-[18px]'}>
                                                 Sign up
                                             </Link>
                                         </p>
                                         <div className="flex gap-2 justify-center">
-                                            <Button fullWidth color="primary" className={'bg-[#071722] h-7 rounded-xl w-4/5'}>
+                                            <Button fullWidth color="primary" className={'bg-[#071722] h-7 rounded-xl w-4/5 text-[18px]'}>
                                                 Login
                                             </Button>
                                         </div>
                                     </form>
                                 </Tab>
-                                <Tab key="sign-up" title="Sign up">
+                                <Tab key="sign-up" title="Sign up" className={'text-[18px]'}>
                                     <form className="flex flex-col gap-4 h-[300px]">
-                                        <Input isRequired label="Name" placeholder="Enter your name" type="text"/>
-                                        <Input isRequired label="Email" placeholder="Enter your email" type="email"/>
-                                        {/*<Input*/}
-                                        {/*    isRequired*/}
-                                        {/*    label="Password"*/}
-                                        {/*    placeholder="Enter your password"*/}
-                                        {/*    type="password"*/}
-                                        {/*/>*/}
+                                        <Input className={'text-[18px]'} isRequired label="Name" placeholder="Enter your name" type="text"/>
+                                        <Input className={'text-[18px]'} isRequired label="Email" placeholder="Enter your email" type="email"/>
 
                                         <Input
                                             label="Password"
@@ -93,18 +81,18 @@ function Login() {
                                                 </button>
                                             }
                                             type={isVisible ? "text" : "password"}
-                                            className="max-w-xs"
+                                            className="max-w-xs text-[18px]"
                                         />
 
 
-                                        <p className="text-center text-small">
+                                        <p className="text-center text-[18px]">
                                             Already have an account?{" "}
-                                            <Link size="sm" onPress={() => setSelected("login")}>
+                                            <Link size="sm" onPress={() => setSelected("login")} className={'text-[18px]'}>
                                                 Login
                                             </Link>
                                         </p>
                                         <div className="flex gap-2 justify-center">
-                                            <Button fullWidth color="primary" className={'bg-[#071722] h-7 rounded-xl w-4/5'}>
+                                            <Button fullWidth color="primary" className={'bg-[#071722] h-7 rounded-xl w-4/5 text-[18px]'}>
                                                 Sign up
                                             </Button>
                                         </div>

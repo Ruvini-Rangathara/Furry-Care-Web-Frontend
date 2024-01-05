@@ -13,11 +13,11 @@ class Input extends React.Component<Props,any> {
   render() {
     return (
         <div>
-            <label htmlFor={this.props.name} className={'block mb-1 mt-1'}>{this.props.label}
+            <label htmlFor={this.props.name} className={'block mb-1 mt-1 text-[18px]'}>{this.props.label}
                 {!this.props.optional ? <span className={'text-red-600'}>*</span> : null}
             </label>
             <input type={this.props.type} id={this.props.name} placeholder={this.props.placeholder}
-                   className={'block border border-gray-300 outline-none focus:border-gray-400 w-full p-1 rounded-md'}/>
+                   className={'text-[18px] block border border-gray-300 outline-none focus:border-gray-400 w-full p-1 rounded-md'}/>
         </div>
     );
   }

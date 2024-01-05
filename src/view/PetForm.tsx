@@ -6,11 +6,11 @@ function PetForm() {
     return <
         div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
 
-        <form className="flex flex-col gap-2 text-[#071722] text-[14px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[25px] border-r-[25px]">
+        <form className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
 
             <div className={'flex flex-col justify-center items-center'}>
                 <p className={'text-[35px] text-[#071722]'}>Pet Details</p>
-                <p className={'text-[14px] text-[#071722] pb-3'}>
+                <p className={'text-[18px] text-[#071722] pb-3'}>
                     "Simplify pet care with our easy form. Manage medical history, <br/> dietary preferences, and more for
                     stress-free, comprehensive pet care."
                 </p>
