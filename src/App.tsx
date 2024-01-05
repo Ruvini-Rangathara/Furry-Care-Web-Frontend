@@ -10,6 +10,7 @@ import Footer from "./view/Footer.tsx";
 // import EventForm from "./view/EventForm.tsx";
 // import DonationForm from "./view/DonationForm.tsx";
 import ComplaintForm from "./view/ComplaintForm.tsx";
+import QForm from "./view/QForm.tsx";
 
 function App() {
 
@@ -32,7 +33,9 @@ function App() {
 
             {/*<DonationForm></DonationForm>*/}
 
-            <ComplaintForm></ComplaintForm>
+            {/*<ComplaintForm></ComplaintForm>*/}
+
+            <QForm></QForm>
 
             <Footer></Footer>
         </div>)
