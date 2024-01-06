@@ -5,7 +5,7 @@ import TextArea from "../component/input/text-area.tsx";
 const userId: string = `U-0001`;
 const date: string = `06/01/2024`;
 
-function QForm() {
+function AnswerForm() {
     return <
         div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
 
@@ -16,7 +16,7 @@ function QForm() {
             <label className={'text-[18px] mr-0 m-auto'}>Date : {date}</label>
 
             <div className={'flex flex-col justify-center items-center'}>
-                <p className={'text-[35px] text-[#071722]'}>Question</p>
+                <p className={'text-[35px] text-[#071722]'}>Answer</p>
                 <p className={'text-[18px] text-[#071722] pb-3'}>
                     "Explore our Q&A section for expert insights and helpful tips, ensuring<br/>
                     you have all the information for optimal pet care."
@@ -25,10 +25,10 @@ function QForm() {
             </div>
 
             <div className={'flex flex-row gap-4'}>
-                <Input label={"Question ID : "} name={'id'} type={'text'} optional={false} placeholder={'Q-0001'}/>
+                <Input label={"Answer ID : "} name={'id'} type={'text'} optional={false} placeholder={'A-0001'}/>
             </div>
 
-            <TextArea name={'text'} label={'Question : '} optional={false} rows={5} placeholder={'Ex:Note'}/>
+            <TextArea name={'text'} label={'Answer : '} optional={false} rows={5} placeholder={'Ex:Note'}/>
 
             <div className={'flex flex-row gap-4'}>
                 <div>
@@ -51,4 +51,4 @@ function QForm() {
     </div>
 }
 
-export default QForm;
+export default AnswerForm;

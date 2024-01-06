@@ -2,6 +2,7 @@
 import './App.css'
 import NavBar from "./view/NavBar.tsx";
 import Footer from "./view/Footer.tsx";
+import AnswerForm from "./view/AnswerForm.tsx";
 // import Login from "./view/Login.tsx";
 // import About from "./view/About.tsx";
 // import PetForm from "./view/PetForm.tsx";
@@ -9,8 +10,8 @@ import Footer from "./view/Footer.tsx";
 // import OrgForm from "./view/OrgForm.tsx";
 // import EventForm from "./view/EventForm.tsx";
 // import DonationForm from "./view/DonationForm.tsx";
-import ComplaintForm from "./view/ComplaintForm.tsx";
-import QForm from "./view/QForm.tsx";
+// import ComplaintForm from "./view/ComplaintForm.tsx";
+// import QForm from "./view/QForm.tsx";
 
 function App() {
 
@@ -35,7 +36,9 @@ function App() {
 
             {/*<ComplaintForm></ComplaintForm>*/}
 
-            <QForm></QForm>
+            {/*<QForm></QForm>*/}
+
+            <AnswerForm></AnswerForm>
 
             <Footer></Footer>
         </div>)
