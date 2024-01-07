@@ -1,5 +1,5 @@
-import Input from "../component/input/input";
-import CustomButton from "../component/input/custom-button.tsx";
+import Input from "../../component/input/input.tsx";
+import CustomButton from "../../component/input/custom-button.tsx";
 
 const userId :string = `U-0001`;
 

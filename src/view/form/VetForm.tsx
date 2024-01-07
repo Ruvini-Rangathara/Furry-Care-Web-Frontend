@@ -1,6 +1,6 @@
-import Input from "../component/input/input";
-import Select from "../component/input/combo-box.tsx";
-import CustomButton from "../component/input/custom-button.tsx";
+import Input from "../../component/input/input.tsx";
+import Select from "../../component/input/combo-box.tsx";
+import CustomButton from "../../component/input/custom-button.tsx";
 
 const userId :string = `U-0001`;
 function VetForm() {

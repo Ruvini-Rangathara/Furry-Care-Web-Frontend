@@ -1,10 +1,9 @@
-import Input from "../component/input/input";
-import CustomButton from "../component/input/custom-button.tsx";
-import Select from "../component/input/combo-box.tsx";
+import Input from "../../component/input/input.tsx";
+import CustomButton from "../../component/input/custom-button.tsx";
 
 const userId :string = `U-0001`;
 
-function ComplaintForm() {
+function DonationForm() {
     return <
         div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
 
@@ -14,28 +13,29 @@ function ComplaintForm() {
             <label className={'text-[18px] mr-0 m-auto mt-5'}>User ID : {userId}</label>
 
             <div className={'flex flex-col justify-center items-center'}>
-                <p className={'text-[35px] text-[#071722]'}>Complaint Details</p>
+                <p className={'text-[35px] text-[#071722]'}>Donation Details</p>
                 <p className={'text-[18px] text-[#071722] pb-3'}>
-                    "Provide feedback effortlessly in our complain section; we streamline<br/>
-                    the process for stress-free resolution and continual improvement of <br/>
-                    your pet care experience."
+                    "Simplify pet care donations with ease. Streamline coordination and<br/>
+                    management for stress-free, enjoyable, and meaningful contributions <br/>
+                    to initiatives."
                 </p>
 
             </div>
 
             <div className={'flex flex-row gap-4'}>
-                <Input label={"Complaint ID : "} name={'id'} type={'text'} optional={false} placeholder={'C-0001'}/>
+                <Input label={"Donation ID : "} name={'id'} type={'text'} optional={false} placeholder={'D-0001'}/>
                 <Input label={"Date : "} name={'date'} type={'date'} optional={false} placeholder={''}/>
             </div>
 
-            <Input type={'text'} name={'title'} label={'Title : '} optional={true} placeholder={'Ex:This is Title'}/>
-            <Input type={'text'} name={'name'} label={'Description : '} optional={false} placeholder={'Ex:Note'}/>
+            <Input type={'text'} name={'name'} label={'Description : '} optional={true} placeholder={'Ex:Note'}/>
 
             <div className={'flex flex-row gap-4'}>
-                <Input type={'text'} name={'location'} label={'Location : '} optional={false} placeholder={'Ex:Panadura'}/>
-                <Select name={'solution'} label={'Solved Status : '} options={['Solved', 'Not Solved']}
-                        optional={false}/>
+                <Input type={'text'} name={'donator'} label={'Donator : '} optional={false} placeholder={'Ex:John Doe'}/>
+                <Input type={'text'} name={'receiver'} label={'Receiver : '} optional={false}
+                       placeholder={'Ex:John Doe'}/>
             </div>
+
+            <Input type={'text'} name={'location'} label={'Location : '} optional={false} placeholder={'Ex:Panadura'}/>
 
             <div className={'flex flex-row gap-4'}>
                 <div>
@@ -59,4 +59,4 @@ function ComplaintForm() {
     </div>
 }
 
-export default ComplaintForm;
+export default DonationForm;
