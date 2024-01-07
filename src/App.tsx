@@ -3,7 +3,8 @@ import './App.css'
 import NavBar from "./view/NavBar.tsx";
 import Footer from "./view/Footer.tsx";
 // import AnswerForm from "./view/AnswerForm.tsx";
-import LostAndFoundForm from "./view/LostAndFoundForm.tsx";
+// import LostAndFoundForm from "./view/LostAndFoundForm.tsx";
+import ViewQA from "./view/ViewQ-A.tsx";
 // import Login from "./view/Login.tsx";
 // import About from "./view/About.tsx";
 // import PetForm from "./view/PetForm.tsx";
@@ -41,7 +42,9 @@ function App() {
 
             {/*<AnswerForm></AnswerForm>*/}
 
-            <LostAndFoundForm></LostAndFoundForm>
+            {/*<LostAndFoundForm></LostAndFoundForm>*/}
+
+            <ViewQA></ViewQA>
 
             <Footer></Footer>
         </div>)
