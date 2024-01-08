@@ -6,15 +6,19 @@ interface LostAndFoundItem {
     title: string;
     img: string;
     id: string;
-    petId: string;
     petName: string;
+    location: string;
     date: string;
 }
 
-function ViewLostAndFound({list}: { list: LostAndFoundItem[] }) {
-    return (<div className={'w-4/5 py-10 px-14 m-auto border-1 border-emerald-400 rounded-2xl my-6'}>
 
-        {/*center a paragraph*/}
+function ViewLostAndFound({list}: { list: LostAndFoundItem[] }) {
+    // const rowSize = 2; // Number of rows
+    // const totalItems = list.length;
+    // const columns = Math.ceil(totalItems / rowSize);
+
+
+    return (<div className={'w-4/5 py-10 px-6 m-auto border-1 border-emerald-400 rounded-2xl my-6'}>
         <div className={'flex flex-row justify-center items-center'}>
             <p className={'text-[45px] text-[#071722] m-auto mx-0'}>Lost & Found Notices</p>
         </div>
@@ -23,20 +27,28 @@ function ViewLostAndFound({list}: { list: LostAndFoundItem[] }) {
             <ComboBox name={'found-status'} label={'Filter By : '} options={['Not Found', 'Found', 'All']}
                       optional={true}/>
         </div>
-
         <br/>
 
-        <div className="gap-12 grid grid-cols-2 sm:grid-cols-4 mt-5">
-            {list.map((item: LostAndFoundItem, index: number) => (<LostAndFoundCard key={index} item={item}/>))}
+
+        <div className={'border-1'}>
+            <div className={'flex flex-row w-full max-h-fit justify-between overflow-y-scroll'}>
+                {list.map((item: LostAndFoundItem, index: number) => (
+                    <div className={'mx-6 my-10'}>
+                        <LostAndFoundCard key={index} item={item}/>
+                    </div>
+
+                ))}
+            </div>
+
         </div>
 
-        {/*add 'more' button using custom-button.tsx*/}
-        <div className={'flex flex-row justify-end items-center pt-12 gap-4'}>
-            {/*add another custom button here*/}
-            <CustomButton borderColor={'#59AE4B'} bgColor={'white'} hoverColor={'#59AE4B'} textColor={'#59AE4B'} textHoverColor={'white'} text={'Notice'}/>
+
+
+        <div className={'flex flex-row justify-end items-center pt-4 gap-4'}>
             <CustomButton borderColor={'#071722'} bgColor={'white'} hoverColor={'#071722'}
                           textColor={'#071722'} textHoverColor={'white'} text={'More'}/>
         </div>
+
 
     </div>);
 }

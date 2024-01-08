@@ -24,6 +24,7 @@ function NavBar() {
             isBordered
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
+            className={'h-[80px]'}
         >
             <NavbarContent className="sm:hidden" justify="start">
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
@@ -31,44 +32,44 @@ function NavBar() {
 
             <NavbarContent className="sm:hidden pr-3" justify="center">
                 <NavbarBrand>
-                    <img className={'logo'} src="src/assets/logo-pet-care.png" alt="React.js"/>
-                    <p className="font-bold  mr-10 text-[18px]">FURRY CARE</p>
+                    <img className={'logo'} src="src/assets/logo1.png" alt="React.js"/>
+                    <p className="font-bold  mr-10 text-[22px]">FURRY CARE</p>
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarBrand>
-                    <img className={'logo'} src="src/assets/logo-pet-care.png" alt="React.js" />
-                    <p className="font-bold text-[18px] mr-10">FURRY CARE</p>
+                    <img className={'logo'} src="src/assets/logo1.png" alt="React.js" />
+                    <p className="font-bold text-[22px] mr-10">FURRY CARE</p>
                 </NavbarBrand>
-                <NavbarItem className={'navbarItem pl-10'}>
-                    <Link color="foreground" href="#">
+                <NavbarItem className={'navbarItem pl-20'}>
+                    <Link color="foreground" href="#" className={'text-[20px]'}>
                         Pet
                     </Link>
                 </NavbarItem>
 
                 <NavbarItem className={'navbarItem'}>
-                    <Link color="foreground" href="#">
+                    <Link color="foreground" href="#" className={'text-[20px]'}>
                         Event
                     </Link>
                 </NavbarItem>
                 <NavbarItem className={'navbarItem'}>
-                    <Link color="foreground" href="#">
+                    <Link color="foreground" href="#" className={'text-[20px]'}>
                         Donation
                     </Link>
                 </NavbarItem>
                 <NavbarItem className={'navbarItem'}>
-                    <Link color="foreground" href="#">
+                    <Link color="foreground" href="#" className={'text-[20px]'}>
                         Complaint
                     </Link>
                 </NavbarItem>
                 <NavbarItem className={'navbarItem'}>
-                    <Link color="foreground" href="#">
+                    <Link color="foreground" href="#" className={'text-[20px]'}>
                         Lost & Found
                     </Link>
                 </NavbarItem >
                 <NavbarItem className={'navbarItem'}>
-                    <Link color="foreground" href="#">
+                    <Link color="foreground" href="#" className={'text-[20px]'}>
                         Q & A
                     </Link>
                 </NavbarItem>
@@ -78,7 +79,7 @@ function NavBar() {
             <NavbarContent justify="end">
 
                 <User
-                    className={'rounded-3xl cursor-pointer ml-56 w-40'}
+                    className={'rounded-3xl cursor-pointer ml-56 text-[21px]'}
                     name="Jane Doe"
                     description="Veterinarian"
                     avatarProps={{
