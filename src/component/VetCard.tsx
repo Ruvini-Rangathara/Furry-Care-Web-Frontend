@@ -1,19 +1,19 @@
 import {Card, CardBody, CardFooter, Image} from "@nextui-org/react";
 
 // Define an interface for the item prop
-interface OrgItem {
+interface VetItem {
     Name: string;
     Img: string;
     Id: string;
+    NIC: string;
     Contact: string;
     Location: string;
 }
 
 // Use the interface in the component
-function OrganizationCard({item}: { item: OrgItem }) {
+function VetCard({item}: { item: VetItem }) {
     return (
         <div className={'bg-blue-100 rounded-2xl'}>
-            <p className={'text-[24px] mx-auto py-3 text-center px-3'}>{item.Name}</p>
 
             <Card shadow="md" isPressable onPress={() => console.log("item pressed")} className={'w-[300px]'}>
                 <CardBody className="overflow-visible p-0">
@@ -27,12 +27,14 @@ function OrganizationCard({item}: { item: OrgItem }) {
                     />
                 </CardBody>
                 <CardFooter className="text-[19px] justify-center text-[#071722]">
-                    <p>Organization ID : {item.Id}</p>
+                    <p>Vet Name : {item.Name}</p>
                 </CardFooter>
                 <CardFooter className="flex-col text-[17px] justify-center pt-0 px-3 pb-3 text-[#004371]">
                     <p>
-                        Location : {item.Location}<br/>
-                        Contact : {item.Contact}
+                        Vet ID : {item.Id}<br/>
+                        NIC : {item.NIC}<br/>
+                        Contact : {item.Contact}<br/>
+                        Location : {item.Location}
                     </p>
                 </CardFooter>
             </Card>
@@ -42,4 +44,4 @@ function OrganizationCard({item}: { item: OrgItem }) {
     );
 }
 
-export default OrganizationCard;
+export default VetCard;

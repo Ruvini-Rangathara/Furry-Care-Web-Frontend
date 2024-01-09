@@ -7,6 +7,7 @@ import ViewComplaint from "./view/detail-view/ViewComplaint.tsx";
 import ViewDonation from "./view/detail-view/ViewDonation.tsx";
 import ViewPetEvent from "./view/detail-view/ViewPetEvent.tsx";
 import ViewOrganization from "./view/detail-view/ViewOrganization.tsx";
+import ViewVet from "./view/detail-view/ViewVet.tsx";
 // import AnswerForm from "./view/AnswerForm.tsx";
 // import LostAndFoundForm from "./view/LostAndFoundForm.tsx";
 // import ViewQA from "./view/detail-view/ViewQ-A.tsx";
@@ -438,12 +439,84 @@ function App() {
         }
     ];
 
+    //for Vet view, sample data for vet - Name, Img, Id, NIC, Contact, Location
+    const vetData = [
+        {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0001",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Panadura",
+        },
+        {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0002",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Colombo",
+        },
+        {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0003",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Galle",
+        },
+        {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0004",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Kandy",
+        },
+        {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0005",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Kurunegala",
+        },
+        {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0006",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Kegalle",
+        },
+        {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0007",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Gampaha",
+        },
+        {
+            Name: "Dr. John",
+            Img: "src/assets/vet2.jpeg",
+            Id: "V-0008",
+            NIC: "123456789V",
+            Contact: "0771234567",
+            Location: "Matara",
+        }
+        ];
+
 
     return (<div>
         <NavBar></NavBar>
         <div className={'h-56 w-full bg-red-500'}></div>
 
         <ViewOrganization list={orgData}></ViewOrganization>
+
+        <div className={'h-56 w-full bg-red-500'}></div>
+
+        <ViewVet list={vetData}></ViewVet>
 
 
         {/*<ViewLostAndFound list={data}></ViewLostAndFound>*/}
