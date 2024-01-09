@@ -19,7 +19,7 @@ function ViewPet({list}: { list: PetItem[] }) {
             </div>
 
             <div className={'mr-0 m-auto w-1/4 cursor-pointer text-[18px]'}>
-                <ComboBox name={'found-status'} label={'Filter By : '} options={['All','Has Owner', 'Hasn\'t Owner']}
+                <ComboBox name={'found-status'} label={'Filter By : '} options={['All', 'Has Owner', 'Hasn\'t Owner']}
                           optional={true}/>
             </div>
             <br/>
@@ -27,7 +27,7 @@ function ViewPet({list}: { list: PetItem[] }) {
             <div className={'border-1'}>
                 <div className={'flex flex-row w-full max-h-fit justify-between overflow-y-scroll'}>
                     {list.map((item: PetItem) => (
-                        <div className={'mx-6 my-10'}  key={item.Id}>
+                        <div className={'mx-6 my-10'} key={item.Id}>
                             <VetCard item={item}/>
                         </div>
 
@@ -38,11 +38,13 @@ function ViewPet({list}: { list: PetItem[] }) {
 
             <div className={'flex flex-row justify-end items-center pt-4 gap-4'}>
                 <CustomButton borderColor={'#071722'} bgColor={'white'} hoverColor={'#071722'}
-                              textColor={'#071722'} textHoverColor={'white'} text={'Pet'}/>
+                              textColor={'#071722'} textHoverColor={'white'} text={'Manage Pet'}
+                />
             </div>
 
-
         </div>);
+
+
 }
 
 export default ViewPet;
