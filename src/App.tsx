@@ -6,6 +6,7 @@ import Footer from "./view/Footer.tsx";
 import ViewComplaint from "./view/detail-view/ViewComplaint.tsx";
 import ViewDonation from "./view/detail-view/ViewDonation.tsx";
 import ViewPetEvent from "./view/detail-view/ViewPetEvent.tsx";
+import ViewOrganization from "./view/detail-view/ViewOrganization.tsx";
 // import AnswerForm from "./view/AnswerForm.tsx";
 // import LostAndFoundForm from "./view/LostAndFoundForm.tsx";
 // import ViewQA from "./view/detail-view/ViewQ-A.tsx";
@@ -363,10 +364,86 @@ function App() {
         }
     ];
 
+    //for Organization, sample data for organization - Name, Img, Id, Contact, Location
+    const orgData = [
+        {
+            Name: "Animal Welfare Association",
+            Img: "src/assets/org-image.jpg",
+            Id: "O-0001",
+            Contact: "0771234567",
+            Location: "Panadura",
+        },
+        {
+            Name: "Animal Welfare Association",
+            Img: "src/assets/org-image.jpg",
+            Id: "O-0002",
+            Contact: "0771234567",
+            Location: "Colombo",
+        },
+        {
+            Name: "Animal Welfare Association",
+            Img: "src/assets/org-image.jpg",
+            Id: "O-0003",
+            Contact: "0771234567",
+            Location: "Galle",
+        },
+        {
+            Name: "Animal Welfare Association",
+            Img: "src/assets/org-image.jpg",
+            Id: "O-0004",
+            Contact: "0771234567",
+            Location: "Kandy",
+        },
+        {
+            Name: "Animal Welfare Association",
+            Img: "src/assets/org-image.jpg",
+            Id: "O-0005",
+            Contact: "0771234567",
+            Location: "Kurunegala",
+        },
+        {
+            Name: "Animal Welfare Association",
+            Img: "src/assets/org-image.jpg",
+            Id: "O-0006",
+            Contact: "0771234567",
+            Location: "Kegalle",
+        },
+        {
+            Name: "Animal Welfare Association",
+            Img: "src/assets/org-image.jpg",
+            Id: "O-0007",
+            Contact: "0771234567",
+            Location: "Gampaha",
+        },
+        {
+            Name: "Animal Welfare Association",
+            Img: "src/assets/org-image.jpg",
+            Id: "O-0008",
+            Contact: "0771234567",
+            Location: "Matara",
+        },
+        {
+            Name: "Animal Welfare Association",
+            Img: "src/assets/org-image.jpg",
+            Id: "O-0009",
+            Contact: "0771234567",
+            Location: "Anuradhapura",
+        },
+        {
+            Name: "Animal Welfare Association",
+            Img: "src/assets/org-image.jpg",
+            Id: "O-0010",
+            Contact: "0771234567",
+            Location: "Polonnaruwa",
+        }
+    ];
+
 
     return (<div>
         <NavBar></NavBar>
         <div className={'h-56 w-full bg-red-500'}></div>
+
+        <ViewOrganization list={orgData}></ViewOrganization>
 
 
         {/*<ViewLostAndFound list={data}></ViewLostAndFound>*/}
