@@ -20,7 +20,7 @@ function ViewLostAndFound({list}: { list: LostAndFoundItem[] }) {
         </div>
 
         <div className={'mr-0 m-auto w-1/4 cursor-pointer text-[18px]'}>
-            <ComboBox name={'found-status'} label={'Filter By : '} options={['Not Found', 'Found', 'All']}
+            <ComboBox name={'found-status'} label={'Filter By : '} options={['All'+'Not Found', 'Found']}
                       optional={true}/>
         </div>
         <br/>

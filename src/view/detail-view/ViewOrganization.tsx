@@ -18,9 +18,9 @@ function ViewOrganization({list}: { list: OrgItem[] }) {
 
             <div className={'border-1'}>
                 <div className={'flex flex-row w-full max-h-fit justify-between overflow-y-scroll'}>
-                    {list.map((item: OrgItem, index: number) => (
-                        <div className={'mx-6 my-10'}>
-                            <OrganizationCard key={index} item={item}/>
+                    {list.map((item: OrgItem) => (
+                        <div key={item.Id} className={'mx-6 my-10'}>
+                            <OrganizationCard item={item}/>
                         </div>
 
                     ))}

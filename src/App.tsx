@@ -20,6 +20,7 @@ import ViewVet from "./view/detail-view/ViewVet.tsx";
 // import DonationForm from "./view/DonationForm.tsx";
 // import ComplaintForm from "./view/ComplaintForm.tsx";
 // import QForm from "./view/QForm.tsx";
+import ViewPet from "./view/detail-view/ViewPet.tsx";
 
 function App() {
 
@@ -507,12 +508,84 @@ function App() {
         }
         ];
 
+    //for Pet view, sample data for pet - Name, Img, Id, Breed, Colors, Owner
+    const petData = [
+        {
+            Name: "Rex",
+            Img: "src/assets/dog2.png",
+            Id: "P-0001",
+            Breed: "German Shepherd",
+            Colors: "Black",
+            Owner: "Has Owner",
+        },
+        {
+            Name: "Max",
+            Img: "src/assets/dog2.png",
+            Id: "P-0002",
+            Breed: "German Shepherd",
+            Colors: "Black",
+            Owner: "Hasn't Owner",
+        },
+        {
+            Name: "Tom",
+            Img: "src/assets/dog2.png",
+            Id: "P-0003",
+            Breed: "German Shepherd",
+            Colors: "Black",
+            Owner: "Hasn't Owner",
+        },
+        {
+            Name: "Jerry",
+            Img: "src/assets/dog2.png",
+            Id: "P-0004",
+            Breed: "German Shepherd",
+            Colors: "Black",
+            Owner: "Has Owner",
+        },
+        {
+            Name: "Spike",
+            Img: "src/assets/dog2.png",
+            Id: "P-0005",
+            Breed: "German Shepherd",
+            Colors: "Black",
+            Owner: "Has Owner",
+        },
+        {
+            Name: "Scooby",
+            Img: "src/assets/dog2.png",
+            Id: "P-0006",
+            Breed: "German Shepherd",
+            Colors: "Black",
+            Owner: "Hasn't Owner",
+        },
+        {
+            Name: "Rover",
+            Img: "src/assets/dog2.png",
+            Id: "P-0007",
+            Breed: "German Shepherd",
+            Colors: "Black",
+            Owner: "Has Owner",
+        },
+        {
+            Name: "Bruno",
+            Img: "src/assets/dog2.png",
+            Id: "P-0008",
+            Breed: "German Shepherd",
+            Colors: "Black",
+            Owner: "Hasn't Owner",
+        }
+    ];
+
 
     return (<div>
         <NavBar></NavBar>
         <div className={'h-56 w-full bg-red-500'}></div>
 
         <ViewOrganization list={orgData}></ViewOrganization>
+
+        <div className={'h-56 w-full bg-red-500'}></div>
+
+        <ViewPet list={petData}></ViewPet>
 
         <div className={'h-56 w-full bg-red-500'}></div>
 
