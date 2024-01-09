@@ -5,6 +5,7 @@ import Footer from "./view/Footer.tsx";
 // import ViewLostAndFound from "./view/detail-view/ViewLostAndFound.tsx";
 import ViewComplaint from "./view/detail-view/ViewComplaint.tsx";
 import ViewDonation from "./view/detail-view/ViewDonation.tsx";
+import ViewPetEvent from "./view/detail-view/ViewPetEvent.tsx";
 // import AnswerForm from "./view/AnswerForm.tsx";
 // import LostAndFoundForm from "./view/LostAndFoundForm.tsx";
 // import ViewQA from "./view/detail-view/ViewQ-A.tsx";
@@ -288,6 +289,81 @@ function App() {
     ];
 
 
+    // for Event view , sample data for event - EventID, Title, Location, Date, Time
+    const eventData = [
+        {
+            EventID: "E-0001",
+            Title: "Dog Show",
+            Location: "Panadura",
+            Date: "2021-09-10",
+            Time: "10:00 AM",
+        },
+        {
+            EventID: "E-0002",
+            Title: "Dog Show",
+            Location: "Colombo",
+            Date: "2024-09-11",
+            Time: "10:00 AM",
+        },
+        {
+            EventID: "E-0003",
+            Title: "Dog Show",
+            Location: "Galle",
+            Date: "2021-09-12",
+            Time: "10:00 AM",
+        },
+        {
+            EventID: "E-0004",
+            Title: "Dog Show",
+            Location: "Kandy",
+            Date: "2024-09-13",
+            Time: "10:00 AM",
+        },
+        {
+            EventID: "E-0005",
+            Title: "Dog Show",
+            Location: "Kurunegala",
+            Date: "2024-09-14",
+            Time: "10:00 AM",
+        },
+        {
+            EventID: "E-0006",
+            Title: "Dog Show",
+            Location: "Kegalle",
+            Date: "2021-09-15",
+            Time: "10:00 AM",
+        },
+        {
+            EventID: "E-0007",
+            Title: "Dog Show",
+            Location: "Gampaha",
+            Date: "2021-09-16",
+            Time: "10:00 AM",
+        },
+        {
+            EventID: "E-0008",
+            Title: "Dog Show",
+            Location: "Matara",
+            Date: "2024-09-17",
+            Time: "10:00 AM",
+        },
+        {
+            EventID: "E-0009",
+            Title: "Dog Show",
+            Location: "Anuradhapura",
+            Date: "2024-09-17",
+            Time: "10:00 AM",
+        },
+        {
+            EventID: "E-0010",
+            Title: "Dog Show",
+            Location: "Polonnaruwa",
+            Date: "2021-09-17",
+            Time: "10:00 AM",
+        }
+    ];
+
+
     return (<div>
         <NavBar></NavBar>
         <div className={'h-56 w-full bg-red-500'}></div>
@@ -295,6 +371,9 @@ function App() {
 
         {/*<ViewLostAndFound list={data}></ViewLostAndFound>*/}
 
+        <ViewPetEvent data={eventData}></ViewPetEvent>
+
+        <div className={'h-56 w-full bg-red-500'}></div>
 
         <ViewComplaint data={data}/>
 
