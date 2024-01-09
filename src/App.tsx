@@ -3,8 +3,8 @@ import './App.css'
 import NavBar from "./view/NavBar.tsx";
 import Footer from "./view/Footer.tsx";
 // import ViewLostAndFound from "./view/detail-view/ViewLostAndFound.tsx";
-// import ViewComplaint from "./view/detail-view/ViewComplaint.tsx";
-// import ViewLostAndFound from "./view/detail-view/ViewLostAndFound.tsx";
+import ViewComplaint from "./view/detail-view/ViewComplaint.tsx";
+import ViewDonation from "./view/detail-view/ViewDonation.tsx";
 // import AnswerForm from "./view/AnswerForm.tsx";
 // import LostAndFoundForm from "./view/LostAndFoundForm.tsx";
 // import ViewQA from "./view/detail-view/ViewQ-A.tsx";
@@ -21,98 +21,80 @@ import Footer from "./view/Footer.tsx";
 function App() {
 
     // for complaint regenerate the sample data with the following code
-    // const data = [
-    //     {
-    //         ComplaintID: "C-0001",
-    //         UserID: "U-0001",
-    //         PetID: "P-0001",
-    //         PetName: "Rex",
-    //         Date: "2021-09-10",
-    //         Description: "Dog is sick",
-    //         Status: "Pending"
-    //
-    //     },
-    //     {
-    //         ComplaintID: "C-0002",
-    //         UserID: "U-0002",
-    //         PetID: "P-0002",
-    //         PetName: "Max",
-    //         Date: "2021-09-11",
-    //         Description: "Dog is sick",
-    //         Status: "Pending"
-    //
-    //     },
-    //     {
-    //         ComplaintID: "C-0003",
-    //         UserID: "U-0003",
-    //         PetID: "P-0003",
-    //         PetName: "Tom",
-    //         Date: "2021-09-12",
-    //         Description: "Dog is sick",
-    //         Status: "Pending"
-    //
-    //     },
-    //     {
-    //         ComplaintID: "C-0004",
-    //         UserID: "U-0004",
-    //         PetID: "P-0004",
-    //         PetName: "Jerry",
-    //         Date: "2021-09-13",
-    //         Description: "Dog is sick",
-    //         Status: "Pending"
-    //
-    //     },
-    //     {
-    //         ComplaintID: "C-0005",
-    //         UserID: "U-0005",
-    //         PetID: "P-0005",
-    //         PetName: "Spike",
-    //         Date: "2021-09-14",
-    //         Description: "Dog is sick",
-    //         Status: "Pending"
-    //
-    //     },
-    //     {
-    //         ComplaintID: "C-0006",
-    //         UserID: "U-0006",
-    //         PetID: "P-0006",
-    //         PetName: "Scooby",
-    //         Date: "2021-09-15",
-    //         Description: "Dog is sick",
-    //         Status: "Pending"
-    //
-    //     },
-    //     {
-    //         ComplaintID: "C-0007",
-    //         UserID: "U-0007",
-    //         PetID: "P-0007",
-    //         PetName: "Rover",
-    //         Date: "2021-09-16",
-    //         Description: "Dog is sick",
-    //         Status: "Pending"
-    //
-    //     },
-    //     {
-    //         ComplaintID: "C-0008",
-    //         UserID: "U-0008",
-    //         PetID: "P-0008",
-    //         PetName: "Bruno",
-    //         Date: "2021-09-17",
-    //         Description: "Dog is sick",
-    //         Status: "Pending"
-    //     },
-    //     {
-    //         ComplaintID: "C-0009",
-    //         UserID: "U-0009",
-    //         PetID: "P-0009",
-    //         PetName: "Bruno",
-    //         Date: "2021-09-17",
-    //         Description: "Dog is sick",
-    //         Status: "Pending"
-    //     }
-    // ];
+    const data = [
+        {
+            ComplaintID: "C-0001",
+            Date: "2021-09-10",
+            Location: "Panadura",
+            Title: "Dog Harassment",
+            Status: "Not Resolved",
+        },
+        {
+            ComplaintID: "C-0002",
+            Date: "2021-09-11",
+            Location: "Colombo",
+            Title: "Dog Harassment",
+            Status: "Resolved",
+        },
+        {
+            ComplaintID: "C-0003",
+            Date: "2021-09-12",
+            Location: "Galle",
+            Title: "Dog Harassment",
+            Status: "Not Resolved",
+        },
+        {
+            ComplaintID: "C-0004",
+            Date: "2021-09-13",
+            Location: "Kandy",
+            Title: "Dog Harassment",
+            Status: "Not Resolved",
+        },
+        {
+            ComplaintID: "C-0005",
+            Date: "2021-09-14",
+            Location: "Kurunegala",
+            Title: "Dog Harassment",
+            Status: "Resolved",
+        },
+        {
+            ComplaintID: "C-0006",
+            Date: "2021-09-15",
+            Location: "Kegalle",
+            Title: "Dog Harassment",
+            Status: "Resolved",
+        },
+        {
+            ComplaintID: "C-0007",
+            Date: "2021-09-16",
+            Location: "Gampaha",
+            Title: "Dog Harassment",
+            Status: "Not Resolved",
+        },
+        {
+            ComplaintID: "C-0008",
+            Date: "2021-09-17",
+            Location: "Matara",
+            Title: "Dog Harassment",
+            Status: "Resolved",
+        },
+        {
+            ComplaintID: "C-0009",
+            Date: "2021-09-17",
+            Location: "Anuradhapura",
+            Title: "Dog Harassment",
+            Status: "Not Resolved",
+        },
+        {
+            ComplaintID: "C-0010",
+            Date: "2021-09-17",
+            Location: "Polonnaruwa",
+            Title: "Dog Harassment",
+            Status: "Not Resolved",
+        }
+    ];
 
-    //  for lost & found  sample data for lost and found const data, title, img , id , petid , petname , date
+    //  // for lost & found  sample data for lost and found const data, title, img , id , petid , petname , date
     //
     // const data = [
     //     {
@@ -230,6 +212,82 @@ function App() {
     // ];
 
 
+
+    // for Donation view, sample data for donation - DonationID, Date, Location, Donor, Receiver
+    const donationData = [
+        {
+            DonationID: "D-0001",
+            Date: "2021-09-10",
+            Location: "Panadura",
+            Donor: "John",
+            Receiver: "James",
+        },
+        {
+            DonationID: "D-0002",
+            Date: "2021-09-11",
+            Location: "Colombo",
+            Donor: "John",
+            Receiver: "James",
+        },
+        {
+            DonationID: "D-0003",
+            Date: "2021-09-12",
+            Location: "Galle",
+            Donor: "John",
+            Receiver: "James",
+        },
+        {
+            DonationID: "D-0004",
+            Date: "2021-09-13",
+            Location: "Kandy",
+            Donor: "John",
+            Receiver: "James",
+        },
+        {
+            DonationID: "D-0005",
+            Date: "2021-09-14",
+            Location: "Kurunegala",
+            Donor: "John",
+            Receiver: "James",
+        },
+        {
+            DonationID: "D-0006",
+            Date: "2021-09-15",
+            Location: "Kegalle",
+            Donor: "John",
+            Receiver: "James",
+        },
+        {
+            DonationID: "D-0007",
+            Date: "2021-09-16",
+            Location: "Gampaha",
+            Donor: "John",
+            Receiver: "James",
+        },
+        {
+            DonationID: "D-0008",
+            Date: "2021-09-17",
+            Location: "Matara",
+            Donor: "John",
+            Receiver: "James",
+        },
+        {
+            DonationID: "D-0009",
+            Date: "2021-09-17",
+            Location: "Anuradhapura",
+            Donor: "John",
+            Receiver: "James",
+        },
+        {
+            DonationID: "D-0010",
+            Date: "2021-09-17",
+            Location: "Polonnaruwa",
+            Donor: "John",
+            Receiver: "James",
+        }
+    ];
+
+
     return (<div>
         <NavBar></NavBar>
         <div className={'h-56 w-full bg-red-500'}></div>
@@ -238,7 +296,11 @@ function App() {
         {/*<ViewLostAndFound list={data}></ViewLostAndFound>*/}
 
 
-        {/*<ViewComplaint data={data} columns={sampleColumns} />*/}
+        <ViewComplaint data={data}/>
+
+        <div className={'h-56 w-full bg-red-500'}></div>
+
+        <ViewDonation data={donationData}></ViewDonation>
 
 
         {/*<Login></Login>*/}
@@ -246,7 +308,7 @@ function App() {
         {/*<About></About>*/}
 
         {/*<PetForm></PetForm>*/}
-        <div className={'h-56 w-full bg-red-500'}></div>
+
 
         {/*<VetForm></VetForm>*/}
 
