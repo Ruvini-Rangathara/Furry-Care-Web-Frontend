@@ -1,18 +1,27 @@
 import Input from "../../component/input/input.tsx";
 import CustomButton from "../../component/input/custom-button.tsx";
 import TextArea from "../../component/input/text-area.tsx";
+import {IoCloseOutline} from "react-icons/io5";
 
 const userId: string = `U-0001`;
 const date: string = `06/01/2024`;
 
 function QForm() {
-    return <
-        div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
+    return (// <div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
+        // <form
+        //     className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
+        //     <label className={'text-[18px] mr-0 m-auto mt-4'}>User ID : {userId}</label>
+        //
 
         <form
-            className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
+            className="w-2/4 m-auto mt-5
+            flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
 
-            <label className={'text-[18px] mr-0 m-auto mt-4'}>User ID : {userId}</label>
+            <div className={'flex flex-row justify-end items-center mt-2'}>
+                <label className={'text-[18px] m-auto mr-6'}>User ID : {userId}</label>
+                <IoCloseOutline className={'text-[#071722] text-[35px] cursor-pointer'}/>
+            </div>
+
             <label className={'text-[18px] mr-0 m-auto'}>Date : {date}</label>
 
             <div className={'flex flex-col justify-center items-center'}>
@@ -47,8 +56,7 @@ function QForm() {
             </div>
 
 
-        </form>
-    </div>
+        </form>)
 }
 
 export default QForm;

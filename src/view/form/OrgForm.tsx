@@ -1,23 +1,31 @@
 import Input from "../../component/input/input.tsx";
 import CustomButton from "../../component/input/custom-button.tsx";
+import {IoCloseOutline} from "react-icons/io5";
 
-const userId :string = `U-0001`;
+const userId: string = `U-0001`;
 
 function OrgForm() {
-    return <
-        div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
+    return (// <div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
+        // <form
+        //     className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
+        //     <label className={'text-[18px] mr-0 m-auto mt-5'}>User ID : {userId}</label>
 
         <form
-            className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
+            className="w-2/4 m-auto mt-5
+            flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
 
-            <label className={'text-[18px] mr-0 m-auto mt-5'}>User ID : {userId}</label>
+            <div className={'flex flex-row justify-end items-center mt-2'}>
+                <label className={'text-[18px] m-auto mr-6'}>User ID : {userId}</label>
+                <IoCloseOutline className={'text-[#071722] text-[35px] cursor-pointer'}/>
+            </div>
+
 
             <div className={'flex flex-col justify-center items-center'}>
                 <p className={'text-[35px] text-[#071722]'}>Organization Details</p>
                 <p className={'text-[18px] text-[#071722] pb-3'}>
                     "Improve your pet care with our comprehensive tools, effortlessly<br/>
-                     managing grooming schedules and medical records for a<br/>
-                     stress-free experience."
+                    managing grooming schedules and medical records for a<br/>
+                    stress-free experience."
                 </p>
                 <img className={'w-36 h-36 border border-gray-300'} src={'src/assets/org-image.jpg'}
                      alt={'Dog Image'}></img>
@@ -25,18 +33,21 @@ function OrgForm() {
 
             <div className={'flex flex-row gap-4'}>
                 <Input label={"Organization ID : "} name={'id'} type={'text'} optional={false} placeholder={'O-0001'}/>
-                <Input label={"Organization Name : "} name={'type'} type={'text'} optional={false} placeholder={'Ex:Furry Care'}/>
+                <Input label={"Organization Name : "} name={'type'} type={'text'} optional={false}
+                       placeholder={'Ex:Furry Care'}/>
             </div>
 
             <Input type={'text'} name={'name'} label={'Description : '} optional={true} placeholder={'Ex:Note'}/>
 
             <div className={'flex flex-row gap-4'}>
-                <Input type={'text'} name={'location'} label={'Location : '} optional={true} placeholder={'Ex:Panadura'}/>
+                <Input type={'text'} name={'location'} label={'Location : '} optional={true}
+                       placeholder={'Ex:Panadura'}/>
                 <Input type={'tel'} name={'contact'} label={'Contact No : '} optional={true}
                        placeholder={'Ex:0786628478'}/>
             </div>
 
-            <Input type={'email'} name={'email'} label={'Email : '} optional={false} placeholder={'Ex:ruvini925@gmail.com'}/>
+            <Input type={'email'} name={'email'} label={'Email : '} optional={false}
+                   placeholder={'Ex:ruvini925@gmail.com'}/>
 
             <div className={'flex flex-row gap-4'}>
                 <div>
@@ -55,8 +66,7 @@ function OrgForm() {
             </div>
 
 
-        </form>
-    </div>
+        </form>)
 }
 
 export default OrgForm;

@@ -1,15 +1,16 @@
 import {Accordion, AccordionItem} from "@nextui-org/react";
-import { GoPlus } from "react-icons/go";
+import {GoPlus} from "react-icons/go";
+import {Link as RouterLink} from "react-router-dom";
 
 function ViewQA() {
-    const defaultContent =
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+    const defaultContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
-    return (
-        <div className={'w-1/2 m-auto p-10'}>
+    return (<div className={'w-1/2 m-auto p-10'}>
             <p className={'text-[35px] text-[#071722] m-auto'}>Question & Answers</p>
             <div className={'mr-6 m-auto w-8 h-8 cursor-pointer'}>
-                <GoPlus size={32} ></GoPlus>
+                <RouterLink to={'/q_form'}>
+                    <GoPlus size={32}></GoPlus>
+                </RouterLink>
             </div>
             <br/>
 
@@ -21,8 +22,7 @@ function ViewQA() {
 
             </Accordion>
 
-        </div>
-    );
+        </div>);
 }
 
 export default ViewQA;

@@ -412,7 +412,7 @@ function App() {
                 <Route path="/home" element={<About/>}/>
                 <Route path="/view_pet" element={<ViewPet list={petData}/>}/>
                 <Route path="/pet_form" element={<PetForm/>}/>
-                <Route path="/vet_data" element={<ViewVet list={vetData}/>}/>
+                <Route path="/view_vet" element={<ViewVet list={vetData}/>}/>
                 <Route path="/vet_form" element={<VetForm/>}/>
                 <Route path="/view_org" element={<ViewOrganization list={orgData}/>}/>
                 <Route path="/org_form" element={<OrgForm/>}/>

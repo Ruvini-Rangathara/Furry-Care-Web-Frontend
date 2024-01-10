@@ -1,17 +1,26 @@
 import Input from "../../component/input/input.tsx";
 import CustomButton from "../../component/input/custom-button.tsx";
 import Select from "../../component/input/combo-box.tsx";
+import {IoCloseOutline} from "react-icons/io5";
 
 const userId :string = `U-0001`;
 
 function ComplaintForm() {
-    return <
-        div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
+    return (
+        // <div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
+        // <form
+        //     className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
+        //     <label className={'text-[18px] mr-0 m-auto mt-5'}>User ID : {userId}</label>
 
         <form
-            className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
+            className="w-2/4 m-auto mt-5
+            flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
 
-            <label className={'text-[18px] mr-0 m-auto mt-5'}>User ID : {userId}</label>
+            <div className={'flex flex-row justify-end items-center mt-2'}>
+                <label className={'text-[18px] m-auto mr-6'}>User ID : {userId}</label>
+                <IoCloseOutline className={'text-[#071722] text-[35px] cursor-pointer'}/>
+            </div>
+
 
             <div className={'flex flex-col justify-center items-center'}>
                 <p className={'text-[35px] text-[#071722]'}>Complaint Details</p>
@@ -32,7 +41,8 @@ function ComplaintForm() {
             <Input type={'text'} name={'name'} label={'Description : '} optional={false} placeholder={'Ex:Note'}/>
 
             <div className={'flex flex-row gap-4'}>
-                <Input type={'text'} name={'location'} label={'Location : '} optional={false} placeholder={'Ex:Panadura'}/>
+                <Input type={'text'} name={'location'} label={'Location : '} optional={false}
+                       placeholder={'Ex:Panadura'}/>
                 <Select name={'solution'} label={'Solved Status : '} options={['Solved', 'Not Solved']}
                         optional={false}/>
             </div>
@@ -56,7 +66,7 @@ function ComplaintForm() {
 
 
         </form>
-    </div>
+    )
 }
 
 export default ComplaintForm;

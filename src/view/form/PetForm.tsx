@@ -1,22 +1,30 @@
 import Input from "../../component/input/input.tsx";
 import Select from "../../component/input/combo-box.tsx";
 import CustomButton from "../../component/input/custom-button.tsx";
-import { IoCloseOutline } from "react-icons/io5";
+import {IoCloseOutline} from "react-icons/io5";
 
-const userId :string = `U-0001`;
+const userId: string = `U-0001`;
 
 function PetForm() {
-    return <
-        div className={'flex justify-center p-10 bg-[#D9D9D9] w-3/4 m-auto'}>
+    return (// <div className={'flex justify-center p-10 bg-[#D9D9D9] w-3/4 m-auto'}>
+        //     <form
+        //         className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-x-[50px]">
+        //
+        //         <div className={'mr-0 m-auto cursor-pointer mt-4'}>
+        //             <IoCloseOutline style={{width: '25px', height: '25px'}}/>
+        //         </div>
+        //
+        //         <label className={'text-[18px] mr-0 m-auto'}>User ID : {userId}</label>
 
         <form
-            className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-x-[50px]">
+            className="w-2/4 m-auto mt-5
+            flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
 
-            <div className={'mr-0 m-auto cursor-pointer mt-4'}>
-                <IoCloseOutline style={{width: '25px', height: '25px'}}/>
+            <div className={'flex flex-row justify-end items-center mt-2'}>
+                <label className={'text-[18px] m-auto mr-6'}>User ID : {userId}</label>
+                <IoCloseOutline className={'text-[#071722] text-[35px] cursor-pointer'}/>
             </div>
 
-            <label className={'text-[18px] mr-0 m-auto'}>User ID : {userId}</label>
 
             <div className={'flex flex-col justify-center items-center'}>
                 <p className={'text-[35px] text-[#071722]'}>Pet Details</p>
@@ -74,8 +82,7 @@ function PetForm() {
             </div>
 
 
-        </form>
-    </div>
+        </form>)
 }
 
 export default PetForm;

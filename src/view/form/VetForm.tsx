@@ -1,21 +1,29 @@
 import Input from "../../component/input/input.tsx";
 import Select from "../../component/input/combo-box.tsx";
 import CustomButton from "../../component/input/custom-button.tsx";
+import { IoCloseOutline } from "react-icons/io5";
+
 
 const userId :string = `U-0001`;
 function VetForm() {
-    return <
-        div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
-
+    return (
+    // <div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
         <form
-            className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
+            className="w-2/4 m-auto mt-5
+            flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
 
-            <label className={'text-[18px] mr-0 m-auto mt-5'}>User ID : {userId}</label>
+            <div className={'flex flex-row justify-end items-center mt-2'}>
+                <label className={'text-[18px] m-auto mr-6'}>User ID : {userId}</label>
+                <IoCloseOutline className={'text-[#071722] text-[35px] cursor-pointer'}/>
+            </div>
+
+
 
             <div className={'flex flex-col justify-center items-center'}>
                 <p className={'text-[35px] text-[#071722]'}>Vet Details</p>
                 <p className={'text-[18px] text-[#071722] pb-3'}>
-                    “Seamlessly managing medical records and dietary needs for a <br/> comprehensive veterinary experience."
+                    “Seamlessly managing medical records and dietary needs for a <br/> comprehensive veterinary
+                    experience."
                 </p>
                 <img className={'w-36 h-36 border border-gray-300'} src={'src/assets/vet.png'}
                      alt={'Dog Image'}></img>
@@ -47,7 +55,7 @@ function VetForm() {
             </div>
 
 
-            <div className={'flex flex-row gap-4'}>
+            <div className={'flex flex-row gap-4 ml-10'}>
                 <div>
                     <img className={'w-32 h-32'} src={'src/assets/logo-pet-care.png'}></img>
                 </div>
@@ -65,7 +73,8 @@ function VetForm() {
 
 
         </form>
-    </div>
+        // </div>
+    )
 }
 
 export default VetForm;

@@ -1,5 +1,8 @@
 import CustomButton from "../../component/input/custom-button.tsx";
 import VetCard from "../../component/VetCard.tsx";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
 
 interface VetItem {
     Name: string;
@@ -11,6 +14,16 @@ interface VetItem {
 }
 
 function ViewVet({list}: { list: VetItem[] }) {
+    const navigate = useNavigate();
+
+    const handleManage = (e: React.MouseEvent<HTMLButtonElement>) => {
+        // Prevent the default form submission behavior
+        e.preventDefault();
+        console.log("button clicked.")
+        navigate('/vet_form')
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <div className={'w-4/5 py-10 px-6 m-auto border-1 border-emerald-400 bg-emerald-50 my-6'}>
             <div className={'flex flex-row justify-center items-center'}>
@@ -31,7 +44,9 @@ function ViewVet({list}: { list: VetItem[] }) {
 
             <div className={'flex flex-row justify-end items-center pt-4 gap-4'}>
                 <CustomButton borderColor={'#071722'} bgColor={'white'} hoverColor={'#071722'}
-                              textColor={'#071722'} textHoverColor={'white'} text={'Veterinarian'}/>
+                              textColor={'#071722'} textHoverColor={'white'} text={'Veterinarian'}
+                                onClick={handleManage}
+                />
             </div>
 
 

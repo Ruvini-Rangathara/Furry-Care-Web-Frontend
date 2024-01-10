@@ -3,13 +3,27 @@ import {Tabs, Tab, Input, Link, Card, CardBody} from "@nextui-org/react";
 import { EyeFilledIcon } from "./icon/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "./icon/EyeSlashFilledIcon";
 import CustomButton from "../component/input/custom-button.tsx";
+import { useNavigate } from "react-router-dom";
 
 
 function Login() {
+
     const [selected, setSelected] = React.useState<string>("login");
 
     const [isVisible, setIsVisible] = React.useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
+
+    const navigate = useNavigate();
+
+
+    // Function to handle the click event of the "Login" button
+    const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+        // Prevent the default form submission behavior
+        e.preventDefault();
+        console.log("login clicked.")
+        navigate('/home')
+
+    };
 
     return (
 
@@ -37,7 +51,7 @@ function Login() {
                         >
                             <Tab key="login" title="Login" className={'text-[18px]'}>
                                 <form className="flex flex-col gap-4 text-[18px] pt-3">
-                                    <Input isRequired label="Email" placeholder="Enter your email" type="email"/>
+                                    <Input label="Email" placeholder="Enter your email" type="email"/>
 
                                     <Input
                                         fullWidth
@@ -73,7 +87,10 @@ function Login() {
                                         {/*</Button>*/}
                                         <CustomButton borderColor={'#071722'} bgColor={'white'}
                                                       hoverColor={'#071722'} textColor={'#071722'}
-                                                      textHoverColor={'white'} text={'Login'}/>
+                                                      textHoverColor={'white'} text={'Login'}
+                                                      onClick={handleLogin}
+                                        />
+
                                     </div>
                                 </form>
                             </Tab>

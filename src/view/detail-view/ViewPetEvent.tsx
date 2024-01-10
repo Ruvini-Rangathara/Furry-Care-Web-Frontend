@@ -1,4 +1,7 @@
 import CustomButton from "../../component/input/custom-button.tsx";
+import { useNavigate } from "react-router-dom";
+import React from "react";
+
 
 interface EventData {
     EventID: string;
@@ -13,11 +16,21 @@ interface EventProps {
 }
 
 function ViewPetEvent({data}: EventProps) {
+    const navigate = useNavigate();
+
+    const handleManage = (e: React.MouseEvent<HTMLButtonElement>) => {
+        // Prevent the default form submission behavior
+        e.preventDefault();
+        console.log("button clicked.")
+        navigate('/event_form')
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     if (data.length === 0) {
         return <p>No data available.</p>;
     }
 
-    return <div className={'flex w-0.8 justify-evenly min-h-[300px] flex-col border p-40'}>
+    return <div className={'flex w-0.8 justify-evenly min-h-[300px] flex-col border px-32'}>
         <p className={'text-[45px] text-[#071722] text-center my-6'}>View Pet Events</p>
 
 
@@ -62,10 +75,13 @@ function ViewPetEvent({data}: EventProps) {
                 );
             })}
 
-
-
             </tbody>
         </table>
+
+        <div className={'flex w-[100px] mt-10 mr-0 m-auto'}>
+            <CustomButton borderColor={'#59AE4B'} bgColor={'white'} hoverColor={'#59AE4B'} textColor={'#59AE4B'}
+                          textHoverColor={'white'} text={'Event'} onClick={handleManage}></CustomButton>
+        </div>
     </div>;
 }
 

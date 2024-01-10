@@ -1,3 +1,7 @@
+import ViewPet from "./detail-view/ViewPet.tsx";
+import ViewVet from "./detail-view/ViewVet.tsx";
+import ViewOrganization from "./detail-view/ViewOrganization.tsx";
+
 function About(){
     return (
         <div className="bg-white flex flex-col items-stretch">
@@ -107,6 +111,10 @@ function About(){
                     </div>
                 </div>
             </div>
+
+            <ViewPet list={[]} />
+            <ViewVet list={[]} />
+            <ViewOrganization list={[]} />
         </div>
     )
 }
