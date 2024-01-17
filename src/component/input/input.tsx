@@ -1,26 +1,63 @@
-import React from "react";
+import React, { useState, ChangeEvent, KeyboardEvent } from "react";
 
 interface Props {
-    type: string //type of input
-    name: string  //id of input
-    placeholder ?: string //placeholder of input ? -> optional
-    label: string //label of input
-    optional : boolean //optional or not
-
+    value?: string;
+    type: string;
+    name: string;
+    placeholder?: string;
+    label: string;
+    optional: boolean;
+    onChange?: (value: string) => void;
+    onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-class Input extends React.Component<Props,any> {
-  render() {
+const Input: React.FC<Props> = ({
+                                    value,
+                                    type,
+                                    name,
+                                    placeholder,
+                                    label,
+                                    optional,
+                                    onChange,
+                                    onKeyDown,
+                                }) => {
+    const [inputValue, setInputValue] = useState<string>(value || '');
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const newValue = e.target.value;
+        setInputValue(newValue);
+
+        // Call the provided onChange handler, if available
+        if (onChange) {
+            onChange(newValue);
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        // Call the provided onKeyDown handler, if available
+        if (onKeyDown) {
+            onKeyDown(e);
+        }
+    };
+
     return (
         <div>
-            <label htmlFor={this.props.name} className={'block mb-1 mt-1 text-[18px]'}>{this.props.label}
-                {!this.props.optional ? <span className={'text-red-600'}>*</span> : null}
+            <label htmlFor={name} className={'block mb-1 mt-3 text-[18px]'}>
+                {label}
+                {!optional && <span className={'text-red-600'}>*</span>}
             </label>
-            <input type={this.props.type} id={this.props.name} placeholder={this.props.placeholder}
-                   className={'text-[18px] block border border-gray-300 outline-none focus:border-gray-400 w-full p-1 rounded-md'}/>
+            <input
+                type={type}
+                id={name}
+                placeholder={placeholder}
+                className={'text-[18px] block border border-gray-300 outline-none focus:border-gray-400 p-1 rounded-md'}
+                onChange={(e) => handleChange(e)}
+                onKeyDown={(e) => handleKeyDown(e)}
+                value={inputValue}
+                required={!optional}
+            />
         </div>
     );
-  }
-}
+};
 
 export default Input;

@@ -20,8 +20,9 @@ import ComplaintForm from "./view/form/ComplaintForm.tsx";
 import QForm from "./view/form/QForm.tsx";
 import ViewPet from "./view/detail-view/ViewPet.tsx";
 import Footer from "./view/Footer.tsx";
-import Login from "./view/Login.tsx";
+import Login from "./view/Login2.tsx";
 import NavBar from "./view/NavBar.tsx";
+import SignUp from "./view/SignUp.tsx";
 
 function App() {
     // for complaint regenerate the sample data with the following code
@@ -396,7 +397,6 @@ function App() {
 
     // const navigate = useNavigate();
 
-    // You can define routes that should hide NavBar and Footer here
     const routesWithoutNavBarAndFooter = ['/login'];
 
     const shouldShowNavBarAndFooter = !routesWithoutNavBarAndFooter.includes(
@@ -407,8 +407,11 @@ function App() {
     return (
         <BrowserRouter>
             {shouldShowNavBarAndFooter && <NavBar />}
+            {/*{shouldShowNavBarAndFooter && <About />}*/}
             <Routes>
                 <Route path="/login" element={<Login/>}/>
+                <Route path="/signup" element={<SignUp/>}/>
+                <Route path="/" element={<About/>}/>
                 <Route path="/home" element={<About/>}/>
                 <Route path="/view_pet" element={<ViewPet list={petData}/>}/>
                 <Route path="/pet_form" element={<PetForm/>}/>
@@ -434,26 +437,4 @@ function App() {
     )
 }
 
-/*
-<NavBar></NavBar>
-<About></About>
-<ViewPet list={petData}></ViewPet>
-<PetForm></PetForm>
-<ViewVet list={vetData}></ViewVet>
-<VetForm></VetForm>
-<ViewOrganization list={orgData}></ViewOrganization>
-<OrgForm></OrgForm>
-<ViewPetEvent data={eventData}></ViewPetEvent>
-<EventForm></EventForm>
-<ViewDonation data={donationData}></ViewDonation>
-<DonationForm></DonationForm>
-<ViewComplaint data={data}/>
-<ComplaintForm></ComplaintForm>
-<ViewLostAndFound list={LostData}></ViewLostAndFound>
-<LostAndFoundForm></LostAndFoundForm>
-<ViewQA></ViewQA>
-<QForm></QForm>
-<AnswerForm></AnswerForm>
-{/!*<Login></Login>*!/}
-<Footer></Footer>*/
 export default App

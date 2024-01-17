@@ -1,7 +1,7 @@
 function Footer() {
     return (
 
-            <div className="mt-12 bg-[#F2F2EE] flex flex-col justify-center items-stretch text-[18px]">
+            <div className="mt-12 pt-8 bg-[#F2F2EE] flex flex-col justify-center items-stretch text-[18px]">
 
                 <div className={'flex'}>
                     <div className="flex flex-col items-stretch w-[38%] max-md:w-full max-md:ml-0">

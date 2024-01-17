@@ -42,7 +42,7 @@ function ViewLostAndFound({list}: { list: LostAndFoundItem[] }) {
         <div className={'border-1'}>
             <div className={'flex flex-row w-full max-h-fit justify-between overflow-y-scroll'}>
                 {list.map((item: LostAndFoundItem, index: number) => (
-                    <div className={'mx-6 my-10'}>
+                    <div className={'mx-6 '}>
                         <LostAndFoundCard key={index} item={item}/>
                     </div>
 
@@ -51,16 +51,12 @@ function ViewLostAndFound({list}: { list: LostAndFoundItem[] }) {
 
         </div>
 
-
-
         <div className={'flex flex-row justify-end items-center pt-4 gap-4'}>
             <CustomButton borderColor={'#071722'} bgColor={'white'} hoverColor={'#071722'}
                           textColor={'#071722'} textHoverColor={'white'} text={'Notice'}
                         onClick={handleManage}
             />
         </div>
-
-
     </div>);
 }
 

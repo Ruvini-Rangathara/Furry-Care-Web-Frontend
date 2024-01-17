@@ -7,11 +7,6 @@ const userId :string = `U-0001`;
 
 function ComplaintForm() {
     return (
-        // <div className={'flex justify-center p-10 bg-[#D9D9D9]'}>
-        // <form
-        //     className="flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
-        //     <label className={'text-[18px] mr-0 m-auto mt-5'}>User ID : {userId}</label>
-
         <form
             className="w-2/4 m-auto mt-5
             flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
