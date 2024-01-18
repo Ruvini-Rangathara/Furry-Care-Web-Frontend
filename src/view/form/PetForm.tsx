@@ -291,110 +291,86 @@
 // export default PetForm;
 
 
-import React, {useState} from "react";
+import {ChangeEvent, useState} from "react";
 import {IoCloseOutline} from "react-icons/io5";
 import Input from "../../component/input/input.tsx";
 import Select from "../../component/input/combo-box.tsx";
 import CustomButton from "../../component/input/custom-button.tsx";
-import {useNavigate} from "react-router-dom";
-// import axiosInstance from "../../config/AxiosInstance.ts";
 import Swal from "sweetalert2";
 import axios from "axios";
 
 const userId: string = `username1`;
 
+
 function PetForm() {
-    const navigate = useNavigate();
 
     const [petId, setPetId] = useState<string>("");
-    const [selectedImage, setSelectedImage] = useState<File | null>(null);
+    // const [selectedImage, setSelectedImage] = useState<File | null>(null);
 
     const [petType, setPetType] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [age, setAge] = useState<number>(0);
     const [breed, setBreed] = useState<string>("");
     const [colors, setColors] = useState<string>("");
-    const [ownershipStatus, setOwnershipStatus] = useState<string>("");
-    const [injuredStatus, setInjuredStatus] = useState<string>("");
+    const [ownershipStatus, setOwnershipStatus] = useState('');
+    const [injuredStatus, setInjuredStatus] = useState('');
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+    const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        console.log(selectedImage?.length)
 
-    const handlePetIdChange = async (newValue: string) => {
-        setPetId(newValue);
-    };
+        const file = e.target.files?.[0];
 
-
-    //when press enter on pet id input, search pet by id
-    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        console.log("handle key press before fill form ")
-        if (e.key === 'Enter') {
-            searchById().then(r =>
-                console.log(r)
-            );
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                const result = reader.result as string; // Asserting the type to string
+                setSelectedImage(result);
+            };
+            reader.readAsDataURL(file);
         }
     };
 
-    const searchById = async () => {
-        console.log("fill form")
-        try {
-
-            const config = {
-                method: 'get',
-                maxBodyLength:
-                Infinity,
-                url: 'http://localhost:3000/api/pet/getById/'+petId,
-            };
-
-            axios.request(config)
-                .then((response) => {
-                    const data = response.data;
-
-                    console.log(JSON.stringify(data));
-                    console.log("pet id  : ",data.id)
-                    console.log("pet type  : ",data.petType)
-
-                    //set data into text fields
-                    setPetId(data.id);
-                    setPetType(data.petType);
-                    setName(data.name);
-                    setAge(data.age);
-                    setBreed(data.breed);
-                    setColors(data.colors);
 
 
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        } catch (error) {
-            console.error(error);
-            await Swal.fire({
-                icon: "error", title: "Error Fetching Pet Details", text: "Please try again.",
-            });
-            clearForm();
+    const handleOwnershipChange = (selectedValue: string) => {
+        setOwnershipStatus(selectedValue);
+        console.log("Selected Value : ", ownershipStatus)
+    };
+
+    const handleInjuredStatus = (selectedValue: string) => {
+        setInjuredStatus(selectedValue);
+        console.log("Selected Value : ", injuredStatus)
+    };
+
+    const handleInputs = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
+        switch (type) {
+            case 'petId':
+                setPetId(e.target.value);
+                break;
+            case 'name':
+                setName(e.target.value);
+                break;
+            case 'age':
+                setAge(parseInt(e.target.value, 10) || 0);
+                break;
+            case 'breed':
+                setBreed(e.target.value);
+                break;
+            case 'type':
+                setPetType(e.target.value);
+                break;
+            case 'colors':
+                setColors(e.target.value);
+                break;
+            default :
+                break;
         }
     }
 
 
-    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const imageFile = event.target.files && event.target.files[0];
-
-        if (imageFile) {
-            const petProfileImage = document.getElementById("pet-profile") as HTMLImageElement;
-            const imageUrl = URL.createObjectURL(imageFile);
-            petProfileImage.src = imageUrl;
-            setSelectedImage(imageFile);
-            console.log(selectedImage?.name);
-        }
-    };
-
-    const [isFormVisible, setFormVisibility] = useState(true);
-
-    const handleCloseForm = () => {
-        setFormVisibility(false);
-        navigate("/view_pet");
-        window.scrollTo({top: 0, behavior: "smooth"});
-    };
-
+    // ===============================================================================================
     const clearForm = () => {
         setPetId("");
         setPetType("");
@@ -402,14 +378,21 @@ function PetForm() {
         setAge(0);
         setBreed("");
         setColors("");
-        setOwnershipStatus("");
-        setInjuredStatus("");
-        setSelectedImage(null);
-    };
+    }
 
+    const validateSubmission = () => {
+        if (petId && petType && name && age && breed && colors) {
+            console.log("Valid Inputs");
+            return true;
+        } else {
+            Swal.fire({
+                icon: "error", title: "Invalid Inputs", text: "Please enter valid inputs"
+            });
+            return false;
+        }
+    }
 
-    // ========================================= save pet ==========================================
-    const savePet = async () => {
+    const savePet = () => {
         const pet = {
             id: petId,
             petType: petType,
@@ -422,30 +405,30 @@ function PetForm() {
             username: userId
         };
 
-        try {
-            // await axiosInstance.post("/pet/add", pet);
-            await axios.post("http://localhost:3000/api/pet/add", pet);
-            Swal.fire({
-                icon: "success", title: "Pet Details Saved Successfully", showConfirmButton: false, timer: 1500,
-            }).then(() => {
-                window.location.reload();
-            });
-            clearForm();
-        } catch (e) {
-            console.error(e);
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: '<a href="">Why do I have this issue?</a>',
-            }).then(() => {
-                window.location.reload();
-            });
+        if (validateSubmission()) {
+            axios.post("http://localhost:3000/api/pet/add", pet)
+                .then(response => {
+                    Swal.fire({
+                        icon: "success", title: "Success!", text: "Pet saved successfully : " + response.data
+                    });
+                    clearForm()
+                })
+                .catch(err => {
+                    // Check if the error is a MongoDB duplicate key error
+                    if (err.response && err.response.status === 500 && err.response.data && err.response.data.code === 11000) {
+                        Swal.fire({
+                            icon: "error", title: "Error!", text: "Pet with the same ID already exists."
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error", title: "Sorry!", text: "Something went wrong. " + err
+                        });
+                    }
+                });
         }
     };
 
-    // ============================================ update pet ==========================================
-    const updatePet = async () => {
+    const updatePet = () => {
         const pet = {
             id: petId,
             petType: petType,
@@ -458,60 +441,84 @@ function PetForm() {
             username: userId
         };
 
-        try {
-            await axios.put("http://localhost:8000/api/pet/update/"+petId , pet)
-            Swal.fire({
-                icon: "success", title: "Pet Details Updated Successfully", showConfirmButton: false, timer: 1500,
-            }).then(() => {
-                window.location.reload();
-            });
-            clearForm();
-        } catch (e) {
-            console.error(e);
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: '<a href="">Why do I have this issue?</a>',
-            }).then(() => {
-                window.location.reload();
-            });
+        if (validateSubmission()) {
+            axios.put(`http://localhost:3000/api/pet/update/${petId}`, pet)
+                .then((response) => {
+                    if (response.status === 200) {
+                        Swal.fire({
+                            icon: "success", title: "Success!", text: "Pet updated successfully!"
+                        });
+                        clearForm()
+                    } else {
+                        Swal.fire({
+                            icon: "error", title: "Sorry!", text: "Something went wrong. Please try again."
+                        });
+                    }
+                })
+                .catch((err) => {
+                    Swal.fire({
+                        icon: "error", title: "Sorry!", text: "Something went wrong. " + err
+                    });
+                });
         }
     };
 
-
-    // ============================================ delete pet ===============================================
-    const deletePet = async () => {
-        const pet = {
-            id: petId,
-        };
-
-        try {
-            await axios.delete("http://localhost:3000/api/pet/delete/"+petId, {data: pet})
-            Swal.fire({
-                icon: "success", title: "Pet Details Deleted Successfully", showConfirmButton: false, timer: 1500,
-            }).then(() => {
-                window.location.reload();
-            });
-            clearForm();
-        } catch (e) {
-            console.error(e);
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-                footer: '<a href="">Why do I have this issue?</a>',
-            }).then(() => {
-                window.location.reload();
-            });
+    const deletePet = () => {
+        if (validateSubmission()) {
+            axios.delete(`http://localhost:3000/api/pet/delete/${petId}`)
+                .then((response) => {
+                    if (response.status === 200) {
+                        Swal.fire({
+                            icon: "success", title: "Success!", text: "Pet deleted successfully!"
+                        });
+                        clearForm()
+                    } else {
+                        Swal.fire({
+                            icon: "error", title: "Sorry!", text: "Something went wrong. Please try again."
+                        });
+                    }
+                })
+                .catch((err) => {
+                    Swal.fire({
+                        icon: "error", title: "Sorry!", text: "Something went wrong. " + err
+                    });
+                });
         }
     };
 
+    const searchPet = () => {
+        console.log("Search Pet : ", petId);
+        axios.get(`http://localhost:3000/api/pet/getById/${petId}`)
+            .then((response) => {
+                if (response.status === 200) {
+                    Swal.fire({
+                        icon: "success", title: "Success!", text: "Pet found successfully! : " + response.data
+                    });
+                    setPetType(response.data.petType);
+                    setName(response.data.name);
+                    setAge(response.data.age);
+                    setBreed(response.data.breed);
+                    setColors(response.data.colors);
+                } else {
+                    console.log("Response : ", response);
+                    Swal.fire({
+                        icon: "error", title: "Sorry!", text: "Something went wrong. Please try again."
+                    });
+                }
+            })
+            .catch((err) => {
+                Swal.fire({
+                    icon: "error", title: "Sorry!", text: "Something went wrong. " + err
+                });
+            });
+
+    }
 
 
     // ======================================================================================================
     return (<>
-        {isFormVisible && (<div>
+        (
+        <div>
             <div className={"flex flex-col justify-center items-center "} id={"pet-form"}>
                 <p className={"text-[45px] text-[#071722] mt-14"}>Pet Details</p>
                 <p className={"text-[18px] text-[#071722] pb-3 px-4"}>
@@ -528,13 +535,13 @@ function PetForm() {
                         User ID : {userId}
                     </label>
                     <IoCloseOutline className={"text-[#071722] text-[35px] cursor-pointer"}
-                                    onClick={handleCloseForm}/>
+                    />
                 </div>
                 <div className={"flex"}>
                     <div className={"flex flex-col justify-center items-center mr-4"}>
                         <img
                             className={" w-56 h-56 border border-gray-300 m-auto rounded-[500px]"}
-                            src={"src/assets/dog-image1.jpeg"}
+                            src={selectedImage || "src/assets/dog-image1.jpeg"}
                             alt={"Dog Image"}
                             id={"pet-profile"}
                         ></img>
@@ -553,34 +560,73 @@ function PetForm() {
                         <div className={"flex flex-row gap-4"}>
                             <Input
                                 label={"Pet ID : "}
-                                name={"id"}
                                 type={"text"}
                                 optional={false}
                                 placeholder={"P-0001"}
                                 value={petId}
-                                onChange={(e) => handlePetIdChange(e)}
-                                onKeyDown={(e) => handleKeyPress(e)}
-                            ></Input>
-                            <Input label={"Pet Type : "} name={"type"} type={"text"} optional={false}
-                                   placeholder={"Ex:Dog"}/>
-                            <Input type={"text"} name={"name"} label={"Pet Name : "} optional={true}
-                                   placeholder={"Ex:Rex"}/>
+                                callBack={handleInputs}
+                                name={'petId'}
+                                onKeyDown={searchPet}
+                            >
+                            </Input>
+                            <Input
+                                label={"Pet Type : "}
+                                type={"text"}
+                                optional={false}
+                                placeholder={"Ex:Dog"}
+                                value={petType}
+                                callBack={handleInputs}
+                                name={'type'}
+                            />
+                            <Input
+                                type={"text"}
+                                label={"Pet Name : "}
+                                optional={true}
+                                placeholder={"Ex:Rex"}
+                                value={name}
+                                callBack={handleInputs}
+                                name={'name'}
+
+                            />
                         </div>
                         <div className={"flex flex-row gap-4"}>
-                            <Input type={"number"} name={"age"} label={"Age : "} optional={true}
-                                   placeholder={"Ex:2"}/>
-                            <Input type={"text"} name={"breed"} label={"Breed : "} optional={true}
-                                   placeholder={"Ex:German Shepherd"}/>
-                            <Input type={"text"} name={"color"} label={"Colors : "} optional={true}
-                                   placeholder={"Ex:Brown,Black"}/>
+                            <Input
+                                type={"text"}
+                                label={"Age : "}
+                                optional={true}
+                                placeholder={"Ex:2"}
+                                callBack={handleInputs}
+                                name={'age'}
+                                value={age.toString()}
+
+                            />
+                            <Input
+                                type={"text"}
+                                label={"Breed : "}
+                                optional={true}
+                                placeholder={"Ex:German Shepherd"}
+                                value={breed}
+                                callBack={handleInputs}
+                                name={'breed'}
+                            />
+                            <Input
+                                type={"text"}
+                                label={"Colors : "}
+                                optional={true}
+                                placeholder={"Ex:Brown,Black"}
+                                value={colors}
+                                callBack={handleInputs}
+                                name={'colors'}
+                            />
                         </div>
                         <div className={"flex flex-row gap-4"}>
                             <Select
                                 name={"ownership"}
                                 label={"Ownership Status :"}
-                                options={["Has Owner", "No Owner"]}
+                                options={["Has Owner", "Hasn't Owner"]}
                                 optional={false}
                                 id={"ownership"}
+                                onChange={handleOwnershipChange}
                             />
                             <Select
                                 name={"injured"}
@@ -588,6 +634,7 @@ function PetForm() {
                                 options={["Injured", "Not Injured"]}
                                 optional={false}
                                 id={"injured"}
+                                onChange={handleInjuredStatus}
                             />
                         </div>
                         <div className={"flex flex-row gap-4 mt-2 ml-48"}>
@@ -640,8 +687,9 @@ function PetForm() {
                     </div>
                 </div>
             </form>
-        </div>)}
+        </div>
     </>);
 }
+
 
 export default PetForm;

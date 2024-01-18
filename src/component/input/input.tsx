@@ -1,63 +1,45 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from "react";
+import React, { ChangeEvent, KeyboardEvent } from 'react';
 
 interface Props {
-    value?: string;
     type: string;
     name: string;
     placeholder?: string;
     label: string;
     optional: boolean;
-    onChange?: (value: string) => void;
-    onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
+    callBack: Function;
+    value?: string;
+    onKeyDown?: Function; // New prop for handling keydown event
 }
 
-const Input: React.FC<Props> = ({
-                                    value,
-                                    type,
-                                    name,
-                                    placeholder,
-                                    label,
-                                    optional,
-                                    onChange,
-                                    onKeyDown,
-                                }) => {
-    const [inputValue, setInputValue] = useState<string>(value || '');
+class Input extends React.Component<Props, object> {
+    handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
+        this.props.callBack(e, this.props.name);
+    };
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const newValue = e.target.value;
-        setInputValue(newValue);
-
-        // Call the provided onChange handler, if available
-        if (onChange) {
-            onChange(newValue);
+    handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
+        if (e.key === 'Enter' && this.props.onKeyDown) {
+            this.props.onKeyDown();
         }
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        // Call the provided onKeyDown handler, if available
-        if (onKeyDown) {
-            onKeyDown(e);
-        }
-    };
-
-    return (
-        <div>
-            <label htmlFor={name} className={'block mb-1 mt-3 text-[18px]'}>
-                {label}
-                {!optional && <span className={'text-red-600'}>*</span>}
-            </label>
-            <input
-                type={type}
-                id={name}
-                placeholder={placeholder}
-                className={'text-[18px] block border border-gray-300 outline-none focus:border-gray-400 p-1 rounded-md'}
-                onChange={(e) => handleChange(e)}
-                onKeyDown={(e) => handleKeyDown(e)}
-                value={inputValue}
-                required={!optional}
-            />
-        </div>
-    );
-};
+    render(): React.ReactElement {
+        return (
+            <div className={'m-2'}>
+                <label htmlFor={this.props.name} className={'block'}>
+                    {this.props.label} {!this.props.optional ? <span className="text-red-600">*</span> : null}
+                </label>
+                <input
+                    type={this.props.type}
+                    id={this.props.name}
+                    placeholder={this.props.placeholder}
+                    className={'block border border-gray-200 outline-none focus:border-t-gray-400 p-2 h-10 w-full'}
+                    onChange={this.handleInput}
+                    onKeyDown={this.handleKeyDown}
+                    value={this.props.value}
+                />
+            </div>
+        );
+    }
+}
 
 export default Input;

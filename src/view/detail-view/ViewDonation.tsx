@@ -30,7 +30,7 @@ function ViewDonation({data}: DonationProps) {
         return <p>No data available.</p>;
     }
 
-    return <div className={'flex w-0.8 justify-evenly min-h-[300px] flex-col border px-32'}>
+    return <div className={'flex w-0.8 justify-evenly min-h-[300px] flex-col border px-32 mb-6 pb-6'}>
         <p className={'text-[45px] text-[#071722] text-center my-6'}>View Donations</p>
 
 
