@@ -5,7 +5,6 @@ import Select from "../../component/input/combo-box.tsx";
 import CustomButton from "../../component/input/custom-button.tsx";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { log } from "console";
 
 const userId: string = `username1`;
 
@@ -100,79 +99,6 @@ function PetForm() {
         }
     }
 
-    // const savePet = () => {
-    //     const pet = {
-    //         id: petId,
-    //         petType: petType,
-    //         name: name,
-    //         age: age,
-    //         breed: breed,
-    //         colors: colors,
-    //         ownershipStatus: ownershipStatus,
-    //         injuredStatus: injuredStatus,
-    //         username: userId
-    //     };
-    //
-    //     if (validateSubmission()) {
-    //         axios.post("http://localhost:3000/api/pet/add", pet)
-    //             .then(response => {
-    //                 Swal.fire({
-    //                     icon: "success", title: "Success!", text: "Pet saved successfully : " + response.data
-    //                 });
-    //                 clearForm()
-    //                 console.log("Response success : ", response);
-    //             })
-    //             .catch(err => {
-    //                 // Check if the error is a MongoDB duplicate key error
-    //                 if (err.response && err.response.status === 500 && err.response.data && err.response.data.code === 11000) {
-    //                     Swal.fire({
-    //                         icon: "error", title: "Error!", text: "Pet with the same ID already exists."
-    //                     });
-    //                 } else {
-    //                     Swal.fire({
-    //                         icon: "error", title: "Sorry!", text: "Something went wrong. " + err
-    //                     });
-    //                 }
-    //             });
-    //     }
-    // };
-
-
-    const updatePet = () => {
-        const pet = {
-            id: petId,
-            petType: petType,
-            name: name,
-            age: age,
-            breed: breed,
-            colors: colors,
-            ownershipStatus: ownershipStatus,
-            injuredStatus: injuredStatus,
-            username: userId
-        };
-
-        if (validateSubmission()) {
-            axios.put(`http://localhost:3000/api/pet/update/${petId}`, pet)
-                .then((response) => {
-                    if (response.status === 200) {
-                        Swal.fire({
-                            icon: "success", title: "Success!", text: "Pet updated successfully!"
-                        });
-                        clearForm()
-                    } else {
-                        Swal.fire({
-                            icon: "error", title: "Sorry!", text: "Something went wrong. Please try again."
-                        });
-                    }
-                })
-                .catch((err) => {
-                    Swal.fire({
-                        icon: "error", title: "Sorry!", text: "Something went wrong. " + err
-                    });
-                });
-        }
-    };
-
     const deletePet = () => {
         if (validateSubmission()) {
             axios.delete(`http://localhost:3000/api/pet/delete/${petId}`)
@@ -209,6 +135,9 @@ function PetForm() {
                     setAge(response.data.age);
                     setBreed(response.data.breed);
                     setColors(response.data.colors);
+                    setOwnershipStatus(response.data.ownershipStatus);
+                    setInjuredStatus(response.data.injuredStatus);
+                    setSelectedImage(response.data.imageUrl)
                 } else {
                     console.log("Response : ", response);
                     Swal.fire({
@@ -224,9 +153,9 @@ function PetForm() {
 
     }
 
-
     // =======================================================================================================
     const uploadImage = () => {
+        console.log("in Upload Image method")
         return new Promise((resolve, reject) => {
             const fileInput = fileInputRef.current;
 
@@ -316,58 +245,55 @@ function PetForm() {
         }
     };
     
-
-
-
-
-
-
-    // const fileInputRef = useRef<HTMLInputElement>(null);
-    // const uploadImage = () => {
-    //     return new Promise( (resolve, reject) => {
-    //         const fileInput = fileInputRef.current;
-    //
-    //         if (!fileInput) {
-    //             reject('File input element not found.');
-    //             return;
-    //         }
-    //
-    //         if (fileInput.files && fileInput.files.length > 0) {
-    //             const selectedImage = fileInput.files[0];
-    //
-    //             const formData = new FormData();
-    //             formData.append('image', selectedImage);
-    //
-    //             const config = {
-    //                 method: 'post',
-    //                 url: 'http://localhost:3000/api/upload/images',
-    //                 data: formData,
-    //             };
-    //
-    //             try {
-    //                 // Assuming axios is properly configured and imported
-    //                 const response =  axios.request(config); // Use await here to wait for the promise to resolve
-    //                 console.log('=====================================');
-    //                 console.log("Test in backend : ", JSON.stringify(response.data)); // Access response.data to get the actual response data
-    //                 console.log('=====================================');
-    //
-    //                 // Resolve with the image URL
-    //                 resolve(response.data);
-    //
-    //             } catch (error) {
-    //                 console.error('Error uploading image:', error);
-    //                 // Reject with the error message
-    //                 reject('Error uploading image');
-    //             }
-    //         } else {
-    //             console.error('No file selected.');
-    //             // Reject with a message
-    //             reject('No file selected.');
-    //         }
-    //     });
-    // };
-
-
+    const updatePet = async () => {
+        try {
+            const imageUrl = await uploadImage();
+            const url = (imageUrl as { profile_url: string }).profile_url;
+            console.log("Url in frontend : ", url);
+    
+            const pet = {
+                id: petId,
+                petType: petType,
+                name: name,
+                age: age,
+                breed: breed,
+                colors: colors,
+                ownershipStatus: ownershipStatus,
+                injuredStatus: injuredStatus,
+                username: userId,
+                imageUrl: url
+            };
+    
+            if (validateSubmission()) {
+                const response = await axios.put(`http://localhost:3000/api/pet/update/${petId}`, pet);
+    
+                console.log("Response url in frontend : ", url);
+    
+                if (response.status === 200) {
+                    Swal.fire({
+                        icon: "success", title: "Success!", text: "Pet updated successfully!"
+                    });
+                    clearForm();
+                } else {
+                    Swal.fire({
+                        icon: "error", title: "Sorry!", text: "Something went wrong. Please try again."
+                    });
+                }
+            }
+        } catch (error) {
+            console.error('Error during pet update:', error);
+    
+            if (error === 'No file selected.') {
+                Swal.fire({
+                    icon: "error", title: "Error!", text: "No file selected."
+                });
+            } else {
+                Swal.fire({
+                    icon: "error", title: "Error!", text: "Error during pet update"
+                });
+            }
+        }
+    };
 
     // ======================================================================================================
     return ( <>
@@ -547,3 +473,4 @@ function PetForm() {
 
 
 export default PetForm;
+
