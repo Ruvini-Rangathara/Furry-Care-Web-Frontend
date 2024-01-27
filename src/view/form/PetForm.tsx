@@ -85,6 +85,7 @@ function PetForm() {
         setAge(0);
         setBreed("");
         setColors("");
+        setSelectedImage(null);
     }
 
     const validateSubmission = () => {
@@ -213,11 +214,6 @@ function PetForm() {
                 imageUrl: url
             };
 
-            console.log("==================================================================================")
-            console.log("Pet in save method: ", JSON.stringify(pet));
-            console.log("==================================================================================")
-
-    
             if (validateSubmission()) {
                 const response = await axios.post("http://localhost:3000/api/pet/add", pet);
 
@@ -295,8 +291,16 @@ function PetForm() {
         }
     };
 
+    const [formVisible, setFormVisible] = useState(true);
+
+    const closeForm = () => {
+        setFormVisible(false);
+        window.scrollTo(0, 0);
+    };
+
+
     // ======================================================================================================
-    return ( <>
+    return ( <>{formVisible && (
         <div>
             <div className={"flex flex-col justify-center items-center "} id={"pet-form"}>
                 <p className={"text-[45px] text-[#071722] mt-14"}>Pet Details</p>
@@ -313,8 +317,10 @@ function PetForm() {
                     <label className={"text-[18px] m-auto mr-6 bg-gray-300 px-5 py-1 rounded-lg"}>
                         User ID : {userId}
                     </label>
-                    <IoCloseOutline className={"text-[#071722] text-[35px] cursor-pointer"}
-                    />
+                    <button className={'cursor-pointer'} type={'button'} onClick={closeForm}>
+                        <IoCloseOutline className={"text-[#071722] text-[35px] cursor-pointer"}/>
+                    </button>
+
                 </div>
                 <div className={"flex"}>
                     <div className={"flex flex-col justify-center items-center mr-4"}>
@@ -468,6 +474,7 @@ function PetForm() {
                 </div>
             </form>
         </div>
+    )}
     </>);
 }
 

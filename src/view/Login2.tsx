@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import AxiosInstance from '../config/AxiosInstance.ts';
 import { Link } from "react-router-dom";
 import Input from "../component/input/input.tsx";
 import CustomButton from "../component/input/custom-button.tsx";
@@ -8,44 +7,49 @@ const Login: React.FC = () => {
     const [username, setUsername]=useState('');
     const [password, setPassword]=useState('');
 
+    const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setUsername(event.target.value);
+    };
 
-    const login=async ()=>{
-        try{
-            const response = await AxiosInstance.post('/user/login',{
-                username,password
-            });
+    const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPassword(event.target.value);
+    };
 
-            const expirationDate = new Date();
-            expirationDate.setDate(expirationDate.getDate()+2);
+    const login = async ()=>{
+        if(password && username){
+            const user = {
+                username : username,
+                password : password
+            }
 
-            const cookieValue=encodeURIComponent('token')+'='
-                +encodeURIComponent(response.data)+'; expires='+expirationDate.toUTCString()+'; path=/';
+            console.log(JSON.stringify(user))
 
-            document.cookie=cookieValue;
-            console.log(response.data);
-
-            setUsername('');
-            setPassword('');
-
-        }catch (e){
-            console.log(e)
+            try{
+                const response = await fetch('http://localhost:3000/api/user/login',{
+                    method : 'POST',
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    },
+                    body : JSON.stringify(user)
+                })
+                const data = await response.json()
+                console.log(data)
+                if(data.status === 'success'){
+                    localStorage.setItem('username',data.username)
+                    window.location.href = '/'
+                }else{
+                    alert(data.message)
+                }
+            }catch (e){
+                console.log(e)
+            }
         }
     }
-
-    const handleUsernameChange = (newValue: string) => {
-        setUsername(newValue);
-    };
-
-
-    const handlePasswordChange = (newValue: string) => {
-        setPassword(newValue);
-    };
 
 
     return (
         <>
             <br />
-
             <p className={'text-[35px] text-[#071722] text-center mt-32'}>Login</p>
             <p className={'text-[25px] text-[#071722] text-center'}>Happy Little Paws!</p>
             <div className="w-2/5 m-auto border border-gray-200 rounded-xl flex bg-gray-50">
@@ -60,7 +64,7 @@ const Login: React.FC = () => {
                                 name="username"
                                 label="Username"
                                 optional={false}
-                                onChange={handleUsernameChange}
+                                callBack={handleUsernameChange}
                                 placeholder='Username : '
                             />
                         </div>
@@ -72,7 +76,7 @@ const Login: React.FC = () => {
                                 name="password"
                                 label="Password"
                                 optional={false}
-                                onChange={handlePasswordChange}
+                                callBack={handlePasswordChange}
                                 placeholder='Password : '
                             />
                         </div>

@@ -336,68 +336,67 @@ function App() {
     }];
 
     //for Pet view, sample data for pet - Name, Img, Id, Breed, Colors, Owner
-    const petData = [
-        {
-        Name: "Rex",
-        Img: "src/assets/dog2.png",
-        Id: "P-0001",
-        Breed: "German Shepherd",
-        Colors: "Black",
-        Owner: "Has Owner",
-    }, {
-        Name: "Max",
-        Img: "src/assets/dog2.png",
-        Id: "P-0002",
-        Breed: "German Shepherd",
-        Colors: "Black",
-        Owner: "Hasn't Owner",
-    }, {
-        Name: "Tom",
-        Img: "src/assets/dog2.png",
-        Id: "P-0003",
-        Breed: "German Shepherd",
-        Colors: "Black",
-        Owner: "Hasn't Owner",
-    }, {
-        Name: "Jerry",
-        Img: "src/assets/dog2.png",
-        Id: "P-0004",
-        Breed: "German Shepherd",
-        Colors: "Black",
-        Owner: "Has Owner",
-    }, {
-        Name: "Spike",
-        Img: "src/assets/dog2.png",
-        Id: "P-0005",
-        Breed: "German Shepherd",
-        Colors: "Black",
-        Owner: "Has Owner",
-    }, {
-        Name: "Scooby",
-        Img: "src/assets/dog2.png",
-        Id: "P-0006",
-        Breed: "German Shepherd",
-        Colors: "Black",
-        Owner: "Hasn't Owner",
-    }, {
-        Name: "Rover",
-        Img: "src/assets/dog2.png",
-        Id: "P-0007",
-        Breed: "German Shepherd",
-        Colors: "Black",
-        Owner: "Has Owner",
-    }, {
-        Name: "Bruno",
-        Img: "src/assets/dog2.png",
-        Id: "P-0008",
-        Breed: "German Shepherd",
-        Colors: "Black",
-        Owner: "Hasn't Owner",
-    }];
+    // const petData = [
+    //     {
+    //     Name: "Rex",
+    //     Img: "src/assets/dog2.png",
+    //     Id: "P-0001",
+    //     Breed: "German Shepherd",
+    //     Colors: "Black",
+    //     Owner: "Has Owner",
+    // }, {
+    //     Name: "Max",
+    //     Img: "src/assets/dog2.png",
+    //     Id: "P-0002",
+    //     Breed: "German Shepherd",
+    //     Colors: "Black",
+    //     Owner: "Hasn't Owner",
+    // }, {
+    //     Name: "Tom",
+    //     Img: "src/assets/dog2.png",
+    //     Id: "P-0003",
+    //     Breed: "German Shepherd",
+    //     Colors: "Black",
+    //     Owner: "Hasn't Owner",
+    // }, {
+    //     Name: "Jerry",
+    //     Img: "src/assets/dog2.png",
+    //     Id: "P-0004",
+    //     Breed: "German Shepherd",
+    //     Colors: "Black",
+    //     Owner: "Has Owner",
+    // }, {
+    //     Name: "Spike",
+    //     Img: "src/assets/dog2.png",
+    //     Id: "P-0005",
+    //     Breed: "German Shepherd",
+    //     Colors: "Black",
+    //     Owner: "Has Owner",
+    // }, {
+    //     Name: "Scooby",
+    //     Img: "src/assets/dog2.png",
+    //     Id: "P-0006",
+    //     Breed: "German Shepherd",
+    //     Colors: "Black",
+    //     Owner: "Hasn't Owner",
+    // }, {
+    //     Name: "Rover",
+    //     Img: "src/assets/dog2.png",
+    //     Id: "P-0007",
+    //     Breed: "German Shepherd",
+    //     Colors: "Black",
+    //     Owner: "Has Owner",
+    // }, {
+    //     Name: "Bruno",
+    //     Img: "src/assets/dog2.png",
+    //     Id: "P-0008",
+    //     Breed: "German Shepherd",
+    //     Colors: "Black",
+    //     Owner: "Hasn't Owner",
+    // }];
 
-    // const navigate = useNavigate();
 
-    const routesWithoutNavBarAndFooter = ['/login'];
+        const routesWithoutNavBarAndFooter = ['/login','/signup'];
 
     const shouldShowNavBarAndFooter = !routesWithoutNavBarAndFooter.includes(
         window.location.pathname
@@ -413,7 +412,7 @@ function App() {
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/" element={<About/>}/>
                 <Route path="/home" element={<About/>}/>
-                <Route path="/view_pet" element={<ViewPet list={petData}/>}/>
+                <Route path="/view_pet" element={<ViewPet/>}/>
                 <Route path="/pet_form" element={<PetForm/>}/>
                 <Route path="/view_vet" element={<ViewVet list={vetData}/>}/>
                 <Route path="/vet_form" element={<VetForm/>}/>

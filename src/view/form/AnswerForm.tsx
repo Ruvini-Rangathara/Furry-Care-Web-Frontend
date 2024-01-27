@@ -7,7 +7,12 @@ const userId: string = `U-0001`;
 const date: string = `06/01/2024`;
 
 function AnswerForm() {
-    return (
+    const handleInputs = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
+        e.preventDefault();
+        console.log(type)
+    }
+
+        return (
         <form
             className="w-2/4 m-auto mt-5
             flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
@@ -29,7 +34,7 @@ function AnswerForm() {
             </div>
 
             <div className={'flex flex-row gap-4'}>
-                <Input label={"Answer ID : "} name={'id'} type={'text'} optional={false} placeholder={'A-0001'}/>
+                <Input label={"Answer ID : "} name={'id'} type={'text'} optional={false} placeholder={'A-0001'} callBack={handleInputs}/>
             </div>
 
             <TextArea name={'text'} label={'Answer : '} optional={false} rows={5} placeholder={'Ex:Note'}/>

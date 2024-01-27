@@ -21,44 +21,40 @@ function About(){
                     </div>
                 </div>
 
-                {/*contact and about us div*/}
                 <div className={'w-5/6 flex'}>
-                    <div className="flex flex-col items-stretch w-[50%] mt-32 ml-10">
-                        <div className="text-gray-900 text-4xl self-center whitespace-nowrap">
-                            About Us
+                    <div className="flex flex-col items-stretch w-[100%] mt-32 ml-10">
+                        <div className="text-gray-900 text-[70px] self-center text-center whitespace-nowrap">
+                            Furry Care
+                            <div className={'text-[22px]'}>
+                                Happy Little Paws
+                            </div>
                         </div>
+
                         <div
-                            className="text-[18px] text-gray-900 text-justify text-base self-center max-w-[582px] mt-9 max-md:max-w-full">
+                            className="text-[18px] text-gray-900 text-center text-base self-center mt-4">
                             Furry Care&quot; emerges as a visionary initiative fueled by a
                             sincere passion for the well-being of our beloved four-legged
-                            companions. Recognizing the unique challenges faced by rescue
+                            companions. Recognizing <br/> the unique challenges faced by rescue
                             organizations and dedicated pet enthusiasts, Furry Care seeks
-                            to redefine the way we connect with, nurture, and celebrate
+                            to redefine the way we connect with,<br/> nurture, and celebrate
                             our furry friends.
+
+                            <br/><br/>
+
+                            <button className={'w-[120px] h-[35px] mx-2 rounded-2xl bg-[#071722] text-white'}>About Us</button>
+                            <button  className={'w-[120px] h-[35px] mx-2 rounded-2xl bg-white text-[#071722] border-[#071722] border-1'}>Contact Us</button>
+
+                            <br/>
+                            <br/>
+                            <br/>
+
                         </div>
                         <img
                             loading="lazy"
                             srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/76c792714ffb1df88054dc48a068cffa10e194f6382437f55fff067c99f2b13e?apiKey=1e1d1af84687413c90642ed83011e3eb&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/76c792714ffb1df88054dc48a068cffa10e194f6382437f55fff067c99f2b13e?apiKey=1e1d1af84687413c90642ed83011e3eb&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/76c792714ffb1df88054dc48a068cffa10e194f6382437f55fff067c99f2b13e?apiKey=1e1d1af84687413c90642ed83011e3eb&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/76c792714ffb1df88054dc48a068cffa10e194f6382437f55fff067c99f2b13e?apiKey=1e1d1af84687413c90642ed83011e3eb&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/76c792714ffb1df88054dc48a068cffa10e194f6382437f55fff067c99f2b13e?apiKey=1e1d1af84687413c90642ed83011e3eb&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/76c792714ffb1df88054dc48a068cffa10e194f6382437f55fff067c99f2b13e?apiKey=1e1d1af84687413c90642ed83011e3eb&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/76c792714ffb1df88054dc48a068cffa10e194f6382437f55fff067c99f2b13e?apiKey=1e1d1af84687413c90642ed83011e3eb&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/76c792714ffb1df88054dc48a068cffa10e194f6382437f55fff067c99f2b13e?apiKey=1e1d1af84687413c90642ed83011e3eb&"
-                            className="m-auto aspect-[5.83] object-contain object-center w-[80%] overflow-hidden mt-10 max-md:max-w-full"
+                            className="m-auto aspect-[5.83] object-contain object-center w-[80%] overflow-hidden mt-4 max-md:max-w-full"
                         />
                     </div>
-                    <div className="flex grow flex-col items-stretch max-md:mt-10 mt-20 w-[50%] ">
-                        {/*<div className="text-gray-900 text-4xl self-center w-64 pl-5">*/}
-                        {/*    Contact Us*/}
-                        {/*</div>*/}
-                        {/*<div className="text-gray-900 text-base leading-3 mt-8 pr-7 pl-9 max-md:ml-0">*/}
-                        {/*    <p className={'mb-3'}>Email : subhasinghe200009@gmail.com</p>*/}
-                        {/*    <p className={'mb-3'}>Phone : +9478 6628 489 / +9478 6628 489</p>*/}
-                        {/*    <p className={'mb-3'}>Facebook : Furry Care ( Save Pets )</p>*/}
-                        {/*    <p className={'mb-6'}>Youtube : Furry Care ( Save Pets )</p>*/}
-                        {/*</div>*/}
-                        {/*<img*/}
-                        {/*    loading="lazy"*/}
-                        {/*    srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/b52471ad18b979194d244fbc426ffd2f47e51dbd283284c58939470833d9f1f0?apiKey=1e1d1af84687413c90642ed83011e3eb&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/b52471ad18b979194d244fbc426ffd2f47e51dbd283284c58939470833d9f1f0?apiKey=1e1d1af84687413c90642ed83011e3eb&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b52471ad18b979194d244fbc426ffd2f47e51dbd283284c58939470833d9f1f0?apiKey=1e1d1af84687413c90642ed83011e3eb&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/b52471ad18b979194d244fbc426ffd2f47e51dbd283284c58939470833d9f1f0?apiKey=1e1d1af84687413c90642ed83011e3eb&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/b52471ad18b979194d244fbc426ffd2f47e51dbd283284c58939470833d9f1f0?apiKey=1e1d1af84687413c90642ed83011e3eb&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b52471ad18b979194d244fbc426ffd2f47e51dbd283284c58939470833d9f1f0?apiKey=1e1d1af84687413c90642ed83011e3eb&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/b52471ad18b979194d244fbc426ffd2f47e51dbd283284c58939470833d9f1f0?apiKey=1e1d1af84687413c90642ed83011e3eb&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/b52471ad18b979194d244fbc426ffd2f47e51dbd283284c58939470833d9f1f0?apiKey=1e1d1af84687413c90642ed83011e3eb&"*/}
-                        {/*    className="aspect-[1.29] object-contain object-center w-[150px] overflow-hidden self-center max-w-full mt-5 pr-5"*/}
-                        {/*/>*/}
-                    </div>
-
                 </div>
 
             </div>
