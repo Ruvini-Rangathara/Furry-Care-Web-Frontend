@@ -87,6 +87,7 @@ import Select from "../../component/input/combo-box.tsx";
 import CustomButton from "../../component/input/custom-button.tsx";
 import Swal from "sweetalert2";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const userId: string = `username1`;
 
@@ -102,6 +103,8 @@ function VetForm() {
     const [contactNo, setContactNo] = useState<string>("");
     const [location, setLocation] = useState<string>("");
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+    const navigate = useNavigate();
 
 
     const handleGenderChange = (selectedValue: string) => {
@@ -428,12 +431,27 @@ function VetForm() {
     };
 
 
+    const logout = () => {
+        //navigate to login form
+        console.log("Logout");
+        navigate('/login')
+    }
+
+    const backToDashboard = () => {
+        //navigate to dashboard
+        console.log("Back to Dashboard");
+        navigate('/home')
+    }
+
+
     return (
         <form className="w-2/4 m-auto mt-5 flex flex-col gap-2 text-[#071722] text-[18px] pr-14 pb-6 pl-14 bg-white border-[#071722] border-l-[35px] border-r-[35px]">
 
             <div className='flex flex-row justify-end items-center mt-2'>
                 <label className='text-[18px] m-auto mr-6'>User ID : {userId}</label>
-                <IoCloseOutline className='text-[#071722] text-[35px] cursor-pointer' />
+                <button className={'cursor-pointer'} onClick={backToDashboard}>
+                    <IoCloseOutline className='text-[#071722] text-[35px] cursor-pointer' />
+                </button>
             </div>
 
             <div className='flex flex-col justify-center items-center'>
@@ -490,6 +508,7 @@ function VetForm() {
                         <CustomButton borderColor={'#071722'} bgColor={'white'} hoverColor={'#071722'} textColor={'#071722'} textHoverColor={'white'} text={'Save'} onClick={saveVet} />
                         <CustomButton borderColor={'#59AE4B'} bgColor={'white'} hoverColor={'#59AE4B'} textColor={'#59AE4B'} textHoverColor={'white'} text={'Update'} onClick={updateVet} />
                         <CustomButton borderColor={'#D75555'} bgColor={'white'} hoverColor={'#D75555'} textColor={'#D75555'} textHoverColor={'white'} text={'Delete'} onClick={deleteVet} />
+                        <CustomButton borderColor={'#808080'} bgColor={'white'} hoverColor={'#808080'} textColor={'#808080'} textHoverColor={'white'} text={'Logout'} onClick={logout} />
                     </div>
                 </div>
             </div>

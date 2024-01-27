@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, NavbarBrand, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Link } from "@nextui-org/react";
 import { User } from "@nextui-org/react";
 import {  Link as RouterLink,useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -15,6 +16,36 @@ function NavBar() {
         "Lost & Found",
         "Q & A",
     ];
+
+
+    const navigateUserProfile = async () => {
+        try {
+            const username = localStorage.getItem('username');
+            console.log('username : ', username);
+            const response = await axios.get('http://localhost:3000/api/user/getByUsername/' + username);
+
+            if (response.status === 200) {
+                const user = response.data;
+                localStorage.setItem('user', JSON.stringify(user));
+
+                // Assuming 'userRole' is obtained from the user object
+                const userRole = user.role;
+
+                const paths: Record<string, string> = {
+                    vet: '/vet_form',
+                    org: '/org_form',
+                };
+
+                navigate(paths[userRole as keyof typeof paths]);
+
+            } else {
+                console.error('Error fetching user data:', response);
+            }
+        } catch (error) {
+            console.error('Error while navigating user profile:', error);
+        }
+    };
+
 
     const handleNavigation = (item: string) => {
         const paths: Record<string, string> = {
@@ -65,6 +96,7 @@ function NavBar() {
                     avatarProps={{
                         src: "https://i.pravatar.cc/150?u=a04258114e29026702d"
                     }}
+                    onClick={navigateUserProfile}
                 />
             </NavbarContent>
 

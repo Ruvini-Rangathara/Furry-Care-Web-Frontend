@@ -396,7 +396,7 @@ function App() {
     // }];
 
 
-        const routesWithoutNavBarAndFooter = ['/login','/signup'];
+    const routesWithoutNavBarAndFooter = ['/login','/signup'];
 
     const shouldShowNavBarAndFooter = !routesWithoutNavBarAndFooter.includes(
         window.location.pathname

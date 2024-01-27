@@ -15,6 +15,8 @@ const Login: React.FC = () => {
         setPassword(event.target.value);
     };
 
+
+
     const login = async ()=>{
         if(password && username){
             const user = {
@@ -33,9 +35,9 @@ const Login: React.FC = () => {
                     body : JSON.stringify(user)
                 })
                 const data = await response.json()
-                console.log(data)
                 if(data.status === 'success'){
-                    localStorage.setItem('username',data.username)
+                    localStorage.setItem('username',user.username)
+                    console.log("saved username in local storage : ",localStorage.getItem('username'))
                     window.location.href = '/'
                 }else{
                     alert(data.message)
