@@ -396,7 +396,7 @@ function App() {
     // }];
 
 
-    const routesWithoutNavBarAndFooter = ['/login','/signup'];
+    const routesWithoutNavBarAndFooter = ['/login','/signup','/'];
 
     const shouldShowNavBarAndFooter = !routesWithoutNavBarAndFooter.includes(
         window.location.pathname
@@ -406,11 +406,10 @@ function App() {
     return (
         <BrowserRouter>
             {shouldShowNavBarAndFooter && <NavBar />}
-            {/*{shouldShowNavBarAndFooter && <About />}*/}
             <Routes>
+                <Route path="/" element={<Login/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
-                <Route path="/" element={<About/>}/>
                 <Route path="/home" element={<About/>}/>
                 <Route path="/view_pet" element={<ViewPet/>}/>
                 <Route path="/pet_form" element={<PetForm/>}/>
